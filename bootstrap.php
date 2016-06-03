@@ -19,5 +19,17 @@
  */
 require_once('/vendor/autoload.php');
 
+/**
+ * VALORES CONFIGURACAO DO BANCO DE DADOS
+ */
+@define(DB_HOST, 'localhost');
+@define(DB_USER, 'root');
+@define(DB_PASS, 'toor');
+@define(DB_NAME, 'uosh');
+
+//Instances
 $app = new \Silex\Application;
+$app['DB'] = new \Umbrella\Database\Database(DB_Host, DB_User, DB_Pass, DB_Name);
+
+//Configs
 $app['debug'] = true;
