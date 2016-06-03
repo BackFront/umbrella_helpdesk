@@ -28,9 +28,9 @@ require_once('vendor/autoload.php');
 @define(DB_NAME, 'uosh');
 
 //Instances
+global $app;
 $app = new \Silex\Application;
 $app['DB'] = new Umbrella\Database\Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
 
 //Configs
 $app['debug'] = true;

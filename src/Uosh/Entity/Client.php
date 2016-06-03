@@ -23,59 +23,18 @@ namespace Uosh\Entity;
 class Client
 {
 
-    private $id;
-    private $name;
-    private $email;
-    private $adress;
+    protected $Client;
 
-    //GETTERS______________________________________
-
-    function getId()
+    function getClient()
     {
-        return $this->id;
+        return $this->Client;
     }
 
 
-    function getName()
+    function setClient(array $Client)
     {
-        return $this->name;
-    }
-
-
-    function getEmail()
-    {
-        return $this->email;
-    }
-
-
-    function getAdress()
-    {
-        return $this->adress;
-    }
-
-
-    //SETTERS______________________________________
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-
-    function setName($name)
-    {
-        $this->name = $name;
-    }
-
-
-    function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-
-    function setAdress($adress)
-    {
-        $this->adress = $adress;
+        $this->Client = $Client;
+        return $this;
     }
 
 

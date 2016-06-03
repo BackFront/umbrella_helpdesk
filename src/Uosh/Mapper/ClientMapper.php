@@ -25,6 +25,14 @@ use Uosh\Entity\Client;
 class ClientMapper
 {
 
+    private $DB;
+
+    function __construct($dbInstance)
+    {
+        $this->DB = $dbInstance;
+    }
+
+
     /**
      * Insere/cadastra um cliente no banco
      * 
@@ -33,7 +41,7 @@ class ClientMapper
      */
     public function insert(Client $client)
     {
-        return;
+        return $this->DB->QRInsert('users', $client->getClient());
     }
 
 

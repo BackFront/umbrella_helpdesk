@@ -23,23 +23,25 @@ namespace Uosh\Service;
 class ClientService
 {
 
-    protected $client;
-    protected $clientMapper;
+    protected $Client;
+    protected $ClientMapper;
 
     function __construct(Client $client, ClientMapper $clientMapper)
     {
-        $this->client = $client;
-        $this->clientMapper = $clientMapper;
+        $this->Client = $client;
+        $this->ClientMapper = $clientMapper;
     }
 
 
     /**
+     * Registra um cliente no banco de dados
      * 
      * @param array $client - array com os dados do cliente a ser criado
      */
     public function register(array $datas)
     {
-        
+        $this->Client->setClient($datas);
+        return $this->ClientMapper->insert($this->Client);
     }
 
 
