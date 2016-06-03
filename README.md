@@ -6,7 +6,6 @@ Sistema de helpdesk online desenvolvido em PHP usando as seguintes tecnologias:
 [3]: https://github.com/Semantic-Org/Semantic-UI "Semantic-UI"
 [4]: https://github.com/BackFront "Umbrella-Class"
 
------
 
 - [Silex - Micro framework][1]
 - [Twig - MVC Template system][2]
