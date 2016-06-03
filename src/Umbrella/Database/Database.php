@@ -49,7 +49,8 @@ class Database
                 self::$Connect = new \PDO($dsn, self::$DBUser, self::$DBPass);
             endif;
         } catch(\PDOException $ex) {
-            set_error_handler(Alert::PHPErro("Erro: #{$ex->getCode()} - Não foi possivel estabelecer conexão com o banco de dados", E_USER_ERROR, __FILE__, true));
+            echo "Erro: #{$ex->getCode()} - Não foi possivel estabelecer conexão com o banco de dados";
+            die;
         }
         self::$Connect->SetAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         return self::$Connect;
@@ -124,7 +125,7 @@ class Database
             $this->Result = $this->getConnection()->lastInsertId();
         } catch(\PDOException $ex) {
             $this->Result = NULL;
-            set_error_handler(Alert::PHPErro("<b>Erro: #{$ex->getCode()}</b> - Erro ao incluir dados no Banco<hr />{$ex->getMessage()}", E_USER_NOTICE, __FILE__));
+            echo "<b>Erro: #{$ex->getCode()}</b> - Erro ao incluir dados no Banco<hr />{$ex->getMessage()}";
         }
     }
 
@@ -171,7 +172,7 @@ class Database
             $this->Result = $this->PrepareSelect->fetchAll();
         } catch(\PDOException $ex) {
             $this->Result = NULL;
-            set_error_handler(Alert::PHPErro("<b>Erro: #{$ex->getCode()}</b> - Erro ao selecionar dados no Banco<hr />{$ex->getMessage()}", E_USER_NOTICE, __FILE__));
+            echo "<b>Erro: #{$ex->getCode()}</b> - Erro ao selecionar dados no Banco<hr />{$ex->getMessage()}";
         }
     }
 
@@ -239,7 +240,7 @@ class Database
             $this->Result = TRUE;
         } catch(\PDOException $ex) {
             $this->Result = NULL;
-            set_error_handler(Alert::PHPErro("<b>Erro: #{$ex->getCode()}</b> - Erro ao atualizar dados no Banco<hr />{$ex->getMessage()}", E_USER_NOTICE, __FILE__));
+            echo "<b>Erro: #{$ex->getCode()}</b> - Erro ao atualizar dados no Banco<hr />{$ex->getMessage()}";
         }
     }
 
@@ -290,7 +291,7 @@ class Database
             $this->Result = TRUE;
         } catch(\PDOException $ex) {
             $this->Result = NULL;
-            set_error_handler(Alert::PHPErro("<b>Erro: #{$ex->getCode()}</b> - Erro ao deletar linha do Banco<hr />{$ex->getMessage()}", E_USER_NOTICE, __FILE__));
+            "<b>Erro: #{$ex->getCode()}</b> - Erro ao deletar linha do Banco<hr />{$ex->getMessage()}";
         }
     }
 

@@ -29,8 +29,14 @@ require_once('vendor/autoload.php');
 
 //Instances
 $app = new \Silex\Application;
-$app['DB'] = new Umbrella\Database\Database(DB_Host, DB_User, DB_Pass, DB_Name);
+$app['DB'] = new Umbrella\Database\Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 
 //Configs
 $app['debug'] = true;
+
+
+//Registers
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__ . '/views',
+));

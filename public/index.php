@@ -12,8 +12,9 @@ $app['ClientService'] = function() {
 };
 
 //Routs
-$app->get('/', function() {
-    return "ola mundo";
+$app->get('/', function() use ($app) {
+    return
+            $app['twig']->render('index.twig', []);
 });
 
 $app->get('/client/register', function() use ($app) {
