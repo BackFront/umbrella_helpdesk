@@ -17,3 +17,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+require_once('/vendor/autoload.php');
+
+$app = new \Silex\Application;
+$app['debug'] = true;
