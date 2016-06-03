@@ -1,0 +1,34 @@
+{
+    "name": "backfront/uosh",
+    "description": "Sistema de helpdesk online",
+    "homepage": "http://alvesdouglas.com.br",
+    "keywords": [
+        "helpdesk",
+        "system",
+        "online",
+        "umbrella",
+        "modular"
+    ],
+    "license": "Apache License 2.0",
+    "authors": [
+        {
+            "name": "Douglas Alves",
+            "email": "alves.douglaz@gmail.com",
+            "homepage": "http://alvesdouglas.com.br/",
+            "role": "Creator"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/issue/uosh/",
+        "source": "https://github.com/BackFront/uosh/"
+    },
+    "require": {
+        "silex/silex": "^1.3",
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Umbrella\\": "src/Umbrella/"
+        }
+    }
+}
