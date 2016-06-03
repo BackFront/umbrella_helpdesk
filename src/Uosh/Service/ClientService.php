@@ -1,5 +1,7 @@
 <?php
 /**
+ * <b>ClientService</b>
+ * 
  * Project Name: UOSH
  * Project URI: https://github.com/backfront/Uosh
  * Description: Umbrella Online Systen Helpdesk
@@ -17,20 +19,28 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-require_once('vendor/autoload.php');
+namespace Uosh\Service;
+class ClientService
+{
 
-/**
- * VALORES CONFIGURACAO DO BANCO DE DADOS
- */
-@define(DB_HOST, 'localhost');
-@define(DB_USER, 'root');
-@define(DB_PASS, 'toor');
-@define(DB_NAME, 'uosh');
+    protected $client;
+    protected $clientMapper;
 
-//Instances
-$app = new \Silex\Application;
-$app['DB'] = new Umbrella\Database\Database(DB_Host, DB_User, DB_Pass, DB_Name);
+    function __construct(Client $client, ClientMapper $clientMapper)
+    {
+        $this->client = $client;
+        $this->clientMapper = $clientMapper;
+    }
 
 
-//Configs
-$app['debug'] = true;
+    /**
+     * 
+     * @param array $client - array com os dados do cliente a ser criado
+     */
+    public function register(array $datas)
+    {
+        
+    }
+
+
+}
