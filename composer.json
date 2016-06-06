@@ -26,6 +26,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Controller\\": "controllers/",
             "Umbrella\\": "src/Umbrella/",
             "Uosh\\": "src/Uosh/"
         }

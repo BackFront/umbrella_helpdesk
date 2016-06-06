@@ -16,15 +16,17 @@ $app->get('/', function() use ($app) {
     return $app['twig']->render('index.twig', []);
 });
 
+
+$app->get('/login', function() use ($app) {
+    $args = new stdClass();
+    $args->app = $app;
+    return Controller\HomeController::login($args);
+});
+
 $app->get('/client/register', function() use ($app) {
-    $datas = array();
-    $datas['name'] = "nome do cliente";
-    $datas['email'] = "cliente@email.com";
-    $datas['register_date'] = date('Y-m-d H-i-s');
-    //$datas['adress'] = "rua comendados zazur";
-
-
-    return $app['ClientService']->register($datas);
+    $args = new stdClass();
+    $args->app = $app;
+    return Controller\HomeController::teste($args);
 });
 
 $app->run();
