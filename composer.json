@@ -17,13 +17,9 @@
             "homepage": "http://alvesdouglas.com.br/",
             "role": "Creator"
         }
-    ],
-    "support": {
-        "issues": "https://github.com/issue/uosh/",
-        "source": "https://github.com/BackFront/uosh/"
-    },
+    ],    
     "require": {
-        "silex/silex": "^2.0",
+        "silex/silex": "~2.0",
         "twig/twig": ">=1.8,<2.0-dev",
         "symfony/twig-bridge": "~2.3",
         "php": ">=5.5.0"
@@ -31,7 +27,7 @@
     "autoload": {
         "psr-4": {
             "Umbrella\\": "src/Umbrella/",
-            "Upsh\\": "src/Uosh/"
+            "Uosh\\": "src/Uosh/"
         }
     }
 }

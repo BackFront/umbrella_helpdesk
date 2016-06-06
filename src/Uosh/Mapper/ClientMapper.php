@@ -25,6 +25,7 @@ use Uosh\Entity\Client;
 class ClientMapper
 {
 
+    protected $Client;
     private $DB;
 
     function __construct($dbInstance)
@@ -41,7 +42,8 @@ class ClientMapper
      */
     public function insert(Client $client)
     {
-        return $this->DB->QRInsert('users', $client->getClient());
+        $this->Client = $client;
+        return $this->DB->QRInsert('users', $client->getClient())->getResult();
     }
 
 
@@ -51,7 +53,7 @@ class ClientMapper
      * @param type $id - Id do cliente
      * @return object - retorna um objeto com as informações do cliente
      */
-    public function get($id)
+    public function getClientById($id)
     {
         return;
     }

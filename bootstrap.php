@@ -17,7 +17,12 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-require_once('vendor/autoload.php');
+if(!isset($_SESSION))
+    session_start();
+
+$loader = require_once 'vendor/autoload.php';
+//$loader->add('Umbrella\\', dirname(__DIR__) . '/../App/');
+//$loader->add('Tests', dirname(__DIR__));
 
 /**
  * VALORES CONFIGURACAO DO BANCO DE DADOS
@@ -28,13 +33,17 @@ require_once('vendor/autoload.php');
 @define(DB_NAME, 'uosh');
 
 //Instances
-global $app;
 $app = new \Silex\Application;
 $app['DB'] = new Umbrella\Database\Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
 
 //Configs
 $app['debug'] = true;
 
+if($app['debug']) :
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'On');
+endif;
 
 //Registers
 $app->register(new Silex\Provider\TwigServiceProvider(), array(

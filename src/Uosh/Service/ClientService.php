@@ -19,30 +19,34 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Uosh\Service;
-class ClientService
-{
+namespace Uosh\Service {
+    use Uosh\Entity\Client;
+    use Uosh\Mapper\ClientMapper;
 
-    protected $Client;
-    protected $ClientMapper;
-
-    function __construct(Client $client, ClientMapper $clientMapper)
+    class ClientService
     {
-        $this->Client = $client;
-        $this->ClientMapper = $clientMapper;
+
+        protected $Client;
+        protected $ClientMapper;
+
+        public function __construct(Client $client, ClientMapper $clientMapper)
+        {
+            $this->Client = $client;
+            $this->ClientMapper = $clientMapper;
+        }
+
+
+        /**
+         * Registra um cliente no banco de dados
+         * 
+         * @param array $client - array com os dados do cliente a ser criado
+         */
+        public function register($datas)
+        {
+            $this->Client->setClient($datas);
+            return $this->ClientMapper->insert($this->Client);
+        }
+
+
     }
-
-
-    /**
-     * Registra um cliente no banco de dados
-     * 
-     * @param array $client - array com os dados do cliente a ser criado
-     */
-    public function register(array $datas)
-    {
-        $this->Client->setClient($datas);
-        return $this->ClientMapper->insert($this->Client);
-    }
-
-
 }

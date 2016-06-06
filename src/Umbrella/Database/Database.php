@@ -105,6 +105,7 @@ class Database
         $this->Datas = $Datas;
         $this->getSyntaxInsert();
         $this->ExecuteInsert();
+        return $this;
     }
 
 

@@ -5,8 +5,8 @@ use Uosh\Mapper\ClientMapper;
 use Uosh\Service\ClientService;
 
 //Containers
-$app['rw'] = function() use ($app) {
-    $client = new Client();
+$app['ClientService'] = function($app) {
+    $client = new Uosh\Entity\Client();
     $clientMapper = new ClientMapper($app['DB']);
     return new ClientService($client, $clientMapper);
 };
@@ -17,16 +17,14 @@ $app->get('/', function() use ($app) {
 });
 
 $app->get('/client/register', function() use ($app) {
-
-    var_dump($app);
-
-    $datas;
+    $datas = array();
     $datas['name'] = "nome do cliente";
     $datas['email'] = "cliente@email.com";
-    //$datas['register_date'] = date('Y-m-d H-i-s');
+    $datas['register_date'] = date('Y-m-d H-i-s');
     //$datas['adress'] = "rua comendados zazur";
 
-    $app['ClientService']->register($datas);
+
+    return $app['ClientService']->register($datas);
 });
 
 $app->run();

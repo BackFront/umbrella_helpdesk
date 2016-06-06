@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ba1f38e3f8b6735e08d8f2c6a9ece6bf",
-    "content-hash": "763214bc4a13ac25a041c45361182e74",
+    "hash": "6f8afe012ee0c991f5652aedef654f57",
+    "content-hash": "84ecaa0ebe0ecfab86ccb36be263c551",
     "packages": [
         {
             "name": "pimple/pimple",
@@ -563,16 +563,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v2.8.6",
+            "version": "v2.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "789ffb6f63574d8d5573520ba12156f5c395fcd5"
+                "reference": "360f3330e1df67edde1bb5d72fe5aa7c1bc74b9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/789ffb6f63574d8d5573520ba12156f5c395fcd5",
-                "reference": "789ffb6f63574d8d5573520ba12156f5c395fcd5",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/360f3330e1df67edde1bb5d72fe5aa7c1bc74b9d",
+                "reference": "360f3330e1df67edde1bb5d72fe5aa7c1bc74b9d",
                 "shasum": ""
             },
             "require": {
@@ -640,7 +640,7 @@
             ],
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-03-30 10:37:34"
+            "time": "2016-06-06 11:11:27"
         },
         {
             "name": "twig/twig",

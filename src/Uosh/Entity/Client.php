@@ -31,7 +31,7 @@ class Client
     }
 
 
-    function setClient(array $Client)
+    function setClient($Client)
     {
         $this->Client = $Client;
         return $this;
