@@ -20,29 +20,35 @@
  * @since 1.0.0
  */
 namespace Controller {
-    class HomeController extends GeneralController
+    class HomeController extends GeneralController implements iInstantiate
     {
 
-        private $page;
+        private static $instance;
 
-        public static function login($args = null)
+        public static function instantiate()
         {
-            parent::page("login")
-                    ->setVariable('user', 'testeuser')
-                    ->setVariable('pass', '123');
+            if(empty(self::$instance)) {
+                return self::$instance = new HomeController();
+            }
+            return self::$instance;
+        }
 
-            var_dump(parent::getVariables("login"));
-            return $args->app['twig']->render('login.twig', $this->getVariables("login"));
+
+        /**
+         * @param Application $args instancia da aplicação
+         * @return twig Pagina renderizada do twig
+         */
+        public static function login($args)
+        {
+            self::instantiate()->page("login")
+                    ->setVariable('user', 'tteste')
+                    ->setVariable('pass', '123456')
+                    ->setVariable('teste', 'olá mundo');
+            return $args->app['twig']->render('login.twig', self::$instance->getVariables("login"));
         }
 
 
         public static function teste($args = null)
-        {
-            return $this->_teste($args);
-        }
-
-
-        public function _teste($args = null)
         {
             $datas = array();
             $datas['name'] = "nome do cliente";
@@ -50,7 +56,7 @@ namespace Controller {
             $datas['register_date'] = date('Y-m-d H-i-s');
             //$datas['adress'] = "rua comendados zazur";
 
-            return $args->app['ClientService']->register($this->page);
+            return $args->app['ClientService']->register($datas);
         }
 
 

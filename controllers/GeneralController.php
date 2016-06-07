@@ -20,7 +20,7 @@
  * @since 1.0.0
  */
 namespace Controller {
-    class GeneralController
+    abstract class GeneralController
     {
 
         protected $variables;
@@ -31,21 +31,25 @@ namespace Controller {
         {
             $this->generalVar["title"] = 'teste';
             $this->generalVar['charset'] = "uff-8";
-            $this->generalVar['language_attributes'] = "uff-8";
             $this->generalVar['language_attributes'] = "pt-br";
+            $this->generalVar['author'] = "Douglas Alves";
+            $this->generalVar['scripts'] = "";
+            $this->generalVar['styles'] = "";
         }
 
 
         public function page($page)
         {
             $this->currentPage = $page;
+
+            /** @var GeneralController */
             return $this;
         }
 
 
         public function setVariable($key, $value)
         {
-            $this->variables[$this->currentPage][$key] = $value;
+            $this->generalVar[$key] = $value;
             return $this;
         }
 
@@ -59,3 +63,4 @@ namespace Controller {
 
     }
 }
+             
