@@ -34,7 +34,7 @@ $loader = require_once 'vendor/autoload.php';
 
 //Instances
 $app = new \Silex\Application;
-//$app['DB'] = new Umbrella\Database\Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
 //Configs
 $app['debug'] = true;
 
@@ -45,7 +45,7 @@ endif;
 
 //Registers
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__ . '/views',
+    'twig.path' => __DIR__ . '/views'
 ));
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
@@ -55,5 +55,5 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'dbname' => DB_NAME,
         'user' => DB_USER,
         'password' => DB_PASS
-    ),
+    )
 ));

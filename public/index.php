@@ -23,6 +23,12 @@ $app->get('/login', function() use ($app) {
     return Controller\HomeController::login($args);
 });
 
+$app->get('/teste', function() use ($app) {
+    $args = new stdClass();
+    $args->app = $app;
+    return Controller\HomeController::teste($args);
+});
+
 $app->get('/client/register', function() use ($app) {
     $args = new stdClass();
     $args->app = $app;

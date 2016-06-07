@@ -50,13 +50,11 @@ namespace Controller {
 
         public static function teste($args = null)
         {
-            $datas = array();
-            $datas['name'] = "nome do cliente";
-            $datas['email'] = "cliente@email.com";
-            $datas['register_date'] = date('Y-m-d H-i-s');
-            //$datas['adress'] = "rua comendados zazur";
-
-            return $args->app['ClientService']->register($datas);
+            return $args->app['db']->select('users', array(
+                        'username' => $data['name'],
+                        'password' => $password,
+                        'roles' => $role
+            ));
         }
 
 

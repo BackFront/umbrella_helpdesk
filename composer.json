@@ -17,12 +17,15 @@
             "homepage": "http://alvesdouglas.com.br/",
             "role": "Creator"
         }
-    ],    
+    ],
+    "config": {
+        "bin-dir" : "bin/"
+    },
     "require": {
         "silex/silex": "~2.0",
         "twig/twig": ">=1.8,<2.0-dev",
         "symfony/twig-bridge": "~2.3",
-        "doctrine/dbal" : "~2.2",
+        "doctrine/orm": "~2.4",
         "php": ">=5.5.0"
     },
     "autoload": {
