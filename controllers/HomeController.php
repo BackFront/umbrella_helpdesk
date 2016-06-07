@@ -56,10 +56,9 @@ namespace Controller {
         }
 
 
-        public static function testeUpdate($args = null)
+        public static function testeGet($args = null)
         {
-            $datas['name'] = "Douglas Alves";
-            $args->app['ClientService']->update($datas);
+            return $args->app['ClientService']->find($args->userId);
         }
 
 

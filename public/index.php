@@ -30,10 +30,12 @@ $app->get('/teste', function() use ($app) {
     return Controller\HomeController::teste($args);
 });
 
-$app->get('/teste/update/{id}', function() use ($app) {
+$app->get('/teste/get/{id}', function($id) use ($app) {
     $args = new stdClass();
     $args->app = $app;
-    return Controller\HomeController::teste($args);
+    $args->userId = $id;
+    $response = (array) Controller\HomeController::testeGet($args);
+    return $app->json($response);
 });
 
 $app->get('/client/register', function() use ($app) {
