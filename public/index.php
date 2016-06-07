@@ -1,14 +1,15 @@
 <?php
 require(__DIR__ . '/../bootstrap.php');
+
 use Uosh\Entity\Client;
 use Uosh\Mapper\ClientMapper;
 use Uosh\Service\ClientService;
 
 //Containers
-$app['ClientService'] = function($app) {
+$app['ClientService'] = function() use ($em) {
     $client = new Uosh\Entity\Client();
-    $clientMapper = new ClientMapper($app['DB']);
-    return new ClientService($client, $clientMapper);
+    //$clientMapper = new ClientMapper($em);
+    return new ClientService($em);
 };
 
 //Routs
@@ -24,6 +25,12 @@ $app->get('/login', function() use ($app) {
 });
 
 $app->get('/teste', function() use ($app) {
+    $args = new stdClass();
+    $args->app = $app;
+    return Controller\HomeController::teste($args);
+});
+
+$app->get('/teste/update/{id}', function() use ($app) {
     $args = new stdClass();
     $args->app = $app;
     return Controller\HomeController::teste($args);

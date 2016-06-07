@@ -20,7 +20,9 @@
  * @since 1.0.0
  */
 namespace Uosh\Mapper;
+
 use Uosh\Entity\Client;
+use Doctrine\ORM\EntityManager;
 
 class ClientMapper
 {
@@ -28,9 +30,9 @@ class ClientMapper
     protected $Client;
     private $DB;
 
-    function __construct($dbInstance)
+    function __construct(EntityManager $EntityManager)
     {
-        $this->DB = $dbInstance;
+        $this->DB = $EntityManager;
     }
 
 
@@ -43,7 +45,8 @@ class ClientMapper
     public function insert(Client $client)
     {
         $this->Client = $client;
-        return $this->DB->QRInsert('users', $client->getClient())->getResult();
+        $this->DB->persist($client);
+        return $this->DB->flush();
     }
 
 

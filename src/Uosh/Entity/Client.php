@@ -19,23 +19,61 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Uosh\Entity;
-class Client
-{
+namespace Uosh\Entity {
 
-    protected $Client;
+    use Doctrine\ORM\Mapping as ORM;
 
-    function getClient()
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="clients")
+     */
+    class Client
     {
-        return $this->Client;
+
+        /**
+         * @ORM\Id
+         * @ORM\Column(type="integer")
+         * @ORM\GeneratedValue
+         */
+        private $id;
+        /**
+         * @ORM\Column(type="string", length=255)
+         */
+        private $name;
+        /**
+         * @ORM\Column(type="string", length=255, unique=true)
+         */
+        private $email;
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+
+        function getName()
+        {
+            return $this->name;
+        }
+
+
+        function getEmail()
+        {
+            return $this->email;
+        }
+
+
+        function setName($name)
+        {
+            $this->name = $name;
+        }
+
+
+        function setEmail($email)
+        {
+            $this->email = $email;
+        }
+
+
     }
-
-
-    function setClient($Client)
-    {
-        $this->Client = $Client;
-        return $this;
-    }
-
-
 }

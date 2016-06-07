@@ -50,11 +50,16 @@ namespace Controller {
 
         public static function teste($args = null)
         {
-            return $args->app['db']->select('users', array(
-                        'username' => $data['name'],
-                        'password' => $password,
-                        'roles' => $role
-            ));
+            $datas['name'] = "Douglas Alves";
+            $datas['email'] = "alves.douglaz@gmail.com";
+            $args->app['ClientService']->insert($datas);
+        }
+
+
+        public static function testeUpdate($args = null)
+        {
+            $datas['name'] = "Douglas Alves";
+            $args->app['ClientService']->update($datas);
         }
 
 

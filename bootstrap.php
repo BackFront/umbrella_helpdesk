@@ -21,6 +21,7 @@ if(!isset($_SESSION))
     session_start();
 
 $loader = require_once 'vendor/autoload.php';
+
 use Doctrine\ORM\Tools\Setup,
     Doctrine\ORM\EntityManager,
     Doctrine\Common\EventManager as EventManager,
@@ -76,7 +77,8 @@ AnnotationRegistry::registerFile(__DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRE
 
 $evm = new Doctrine\Common\EventManager();
 $em = EntityManager::create(
-                array('driver' => 'pdo_mysql',
+                array(
+            'driver' => 'pdo_mysql',
             'host' => DB_HOST,
             'port' => DB_PORT,
             'dbname' => DB_NAME,
@@ -84,7 +86,6 @@ $em = EntityManager::create(
             'password' => DB_PASS
                 ), $config, $evm
 );
-
 /* End Configs Doctrine */
 
 
