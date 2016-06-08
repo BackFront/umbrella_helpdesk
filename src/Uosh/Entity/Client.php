@@ -44,6 +44,22 @@ namespace Uosh\Entity {
          * @ORM\Column(type="string", length=255, unique=true)
          */
         private $email;
+        /**
+         * @ORM\Column(type="string", length=255)
+         */
+        private $endereco;
+        /**
+         * @ORM\Column(type="string", length=255)
+         */
+        private $cnpj;
+        /**
+         * @ORM\Column(type="string", length=255)
+         */
+        private $description;
+        /**
+         * @ORM\Column(type="decimal", precision=10, scale=2)
+         */
+        private $budget;
 
         function getId()
         {
@@ -57,9 +73,57 @@ namespace Uosh\Entity {
         }
 
 
+        function getEndereco()
+        {
+            return $this->endereco;
+        }
+
+
+        function getCnpj()
+        {
+            return $this->cnpj;
+        }
+
+
+        function getDescription()
+        {
+            return $this->description;
+        }
+
+
+        function getBudget()
+        {
+            return $this->budget;
+        }
+
+
         function getEmail()
         {
             return $this->email;
+        }
+
+
+        function setEndereco($endereco)
+        {
+            $this->endereco = $endereco;
+        }
+
+
+        function setCnpj($cnpj)
+        {
+            $this->cnpj = $cnpj;
+        }
+
+
+        function setDescription($description)
+        {
+            $this->description = $description;
+        }
+
+
+        function setBudget($budget)
+        {
+            $this->budget = $budget;
         }
 
 
