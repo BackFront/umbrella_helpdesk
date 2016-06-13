@@ -21,9 +21,10 @@ $app->get('/', function() use ($app, $em) {
 });
 
 
-$app->get('/login', function() use ($app) {
+$app->get('/login', function() use ($app, $em) {
     $args = new stdClass();
     $args->app = $app;
+    $args->EntityManager = $em;
     return Controller\HomeController::login($args);
 });
 
