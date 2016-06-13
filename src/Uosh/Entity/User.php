@@ -25,9 +25,9 @@ namespace Uosh\Entity {
 
     /**
      * @ORM\Entity
-     * @ORM\Table(name="clients")
+     * @ORM\Table(name="users")
      */
-    class Client
+    class User
     {
 
         /**
@@ -45,22 +45,30 @@ namespace Uosh\Entity {
          */
         private $email;
         /**
-         * @ORM\Column(type="string", length=255)
+         * @ORM\Column(type="string", length=100)
          */
-        private $endereco;
-        /**
-         * @ORM\Column(type="string", length=255)
-         */
-        private $cnpj;
+        private $alias;
         /**
          * @ORM\Column(type="string", length=255)
          */
         private $description;
         /**
-         * @ORM\Column(type="decimal", precision=10, scale=2)
+         * @ORM\Column(type="string", length=50)
          */
-        private $budget;
+        private $password;
+        /**
+         * @ORM\Column(type="integer")
+         */
+        private $level;
+        /**
+         * @ORM\ManyToOne(targetEntity="Uosh\Entity\Company")
+         * @ORM\JoinColumn(name="id_company", referencedColumnName="id")
+         */
+        private $company;
 
+        //----------------------------------------------------------------------
+        // ===== GETTERS
+        //----------------------------------------------------------------------
         function getId()
         {
             return $this->id;
@@ -73,15 +81,15 @@ namespace Uosh\Entity {
         }
 
 
-        function getEndereco()
+        function getEmail()
         {
-            return $this->endereco;
+            return $this->email;
         }
 
 
-        function getCnpj()
+        function getAlias()
         {
-            return $this->cnpj;
+            return $this->alias;
         }
 
 
@@ -91,39 +99,25 @@ namespace Uosh\Entity {
         }
 
 
-        function getBudget()
+        function getPassword()
         {
-            return $this->budget;
+            return $this->password;
         }
 
 
-        function getEmail()
+        function getLevel()
         {
-            return $this->email;
+            return $this->level;
         }
 
 
-        function setEndereco($endereco)
+        //----------------------------------------------------------------------
+        // ===== SETTERS
+        //----------------------------------------------------------------------
+
+        function getCompany()
         {
-            $this->endereco = $endereco;
-        }
-
-
-        function setCnpj($cnpj)
-        {
-            $this->cnpj = $cnpj;
-        }
-
-
-        function setDescription($description)
-        {
-            $this->description = $description;
-        }
-
-
-        function setBudget($budget)
-        {
-            $this->budget = $budget;
+            return $this->company;
         }
 
 
@@ -136,6 +130,36 @@ namespace Uosh\Entity {
         function setEmail($email)
         {
             $this->email = $email;
+        }
+
+
+        function setAlias($alias)
+        {
+            $this->alias = $alias;
+        }
+
+
+        function setDescription($description)
+        {
+            $this->description = $description;
+        }
+
+
+        function setPassword($password)
+        {
+            $this->password = $password;
+        }
+
+
+        function setLevel($level)
+        {
+            $this->level = $level;
+        }
+
+
+        function setCompany($company)
+        {
+            $this->company = $company;
         }
 
 
