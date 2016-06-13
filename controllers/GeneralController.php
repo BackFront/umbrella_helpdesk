@@ -33,8 +33,12 @@ namespace Controller {
             $this->generalVar['charset'] = "uff-8";
             $this->generalVar['language_attributes'] = "pt-br";
             $this->generalVar['page_author'] = "Douglas Alves";
-            $this->generalVar['scripts'] = "";
-            $this->generalVar['styles'] = "";
+            $this->generalVar['scripts'] = array(
+                "/assets/dist/semantic_ui/semantic.min.js"
+            );
+            $this->generalVar['styles'] = array(
+                "/assets/dist/semantic_ui/semantic.min.css"
+            );
         }
 
 

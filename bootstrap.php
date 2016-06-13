@@ -101,3 +101,12 @@ endif;
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/views'
 ));
+
+$app->register(new Silex\Provider\AssetServiceProvider(), array(
+    'assets.version' => 'v1',
+    'assets.version_format' => '%s?version=%s',
+    'assets.named_packages' => array(
+        'css' => array('version' => 'css2', 'base_path' => 'assets/'),
+        'images' => array('base_urls' => array('https://img.example.com')),
+    ),
+));
