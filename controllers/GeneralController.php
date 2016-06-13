@@ -29,10 +29,10 @@ namespace Controller {
 
         function __construct()
         {
-            $this->generalVar["title"] = 'teste';
+            $this->generalVar["page_title"] = 'teste';
             $this->generalVar['charset'] = "uff-8";
             $this->generalVar['language_attributes'] = "pt-br";
-            $this->generalVar['author'] = "Douglas Alves";
+            $this->generalVar['page_author'] = "Douglas Alves";
             $this->generalVar['scripts'] = "";
             $this->generalVar['styles'] = "";
         }

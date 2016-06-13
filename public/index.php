@@ -13,8 +13,11 @@ $app['ClientService'] = function() use ($em) {
 };
 
 //Routs
-$app->get('/', function() use ($app) {
-    return $app['twig']->render('index.twig', []);
+$app->get('/', function() use ($app, $em) {
+    $args = new stdClass();
+    $args->app = $app;
+    $args->EntityManager = $em;
+    return Controller\HomeController::home($args);
 });
 
 
@@ -22,6 +25,11 @@ $app->get('/login', function() use ($app) {
     $args = new stdClass();
     $args->app = $app;
     return Controller\HomeController::login($args);
+});
+
+
+$app->get('/dashboard', function() {
+    return "Bem vindo ao painel";
 });
 
 $app->get('/teste', function() use ($app) {

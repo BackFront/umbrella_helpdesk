@@ -21,6 +21,8 @@
  */
 namespace Umbrella {
 
+    use Uosh\Entity\Session as SessionEntity;
+
     class Authentication
     {
 
@@ -39,27 +41,36 @@ namespace Umbrella {
             if($this->isAuth()) :
                 return $_SESSION[self::session_name];
             else:
-                return false;
+                return null;
             endif;
         }
 
 
-        public function isAuth()
+        public static function isAuth($EntityManeger = null)
         {
+            $EntityManeger = ($EntityManeger != null)? : $this->EntityManeger;
+
             if(empty($_SESSION[self::session_name]) || $_SESSION[self::session_name]['level'] < $this->Level):
-                $this->Result = false;
 
                 if(isset($_SESSION[self::session_name])) {
                     unset($_SESSION[self::session_name]);
                 }
                 return FALSE;
             else :
-                $authUser = $DB;
-                $authUser->QRSelect($TableUser, "WHERE {$this->userEmail} = :e AND {$this->userPassword} = :p AND {$this->userToken} = :t", "e={$_SESSION['userLogin']['user_email']}&p={$_SESSION['userLogin']['user_password']}&t={$_SESSION['userLogin']['user_token']}");
-                if($authUser->getResult()) {
-                    return TRUE;
+                $entity_session_path = 'Uosh\Entity\Session';
+                $EntityManeger->getRepository($entity_session_path);
+
+                $Session = $clientEntity->findBy(['token' => $_SESSION['token']]);
+
+                /**
+                 * @alterar Criar verificação entre a entidade do usuario retorinado pela variavel $Session e os dados gravados na sessão 
+                 * ex:
+                 * if($Session->getUser->getEmail == $_SESSION['user_email'] && $Session->getUser->getPassword == $_SESSION['user_password']) return true;
+                 */
+                if($Session) {
+                    return $Session;
                 } else {
-                    return FALSE;
+                    return false;
                 }
             endif;
         }

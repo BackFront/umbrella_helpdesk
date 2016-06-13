@@ -34,6 +34,22 @@ namespace Controller {
         }
 
 
+        public static function home($args)
+        {
+            $is_auth = \Umbrella\Authentication::isAuth($args->EntityManager);
+            if($is_auth):
+                header("Location: /dashboard");
+            endif;
+
+            self::instantiate()->page("login")
+                    ->setVariable('page_title', 'Login')
+                    ->setVariable('box_title', 'Online Helpdesk')
+                    ->setVariable('teste', 'olá mundo');
+
+            return $args->app['twig']->render('login.twig', self::$instance->getVariables("login"));
+        }
+
+
         /**
          * @param Application $args instancia da aplicação
          * @return twig Pagina renderizada do twig
