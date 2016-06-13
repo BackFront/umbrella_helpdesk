@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dc4e0b0d0d124aa0d559f4fd187ab934",
-    "content-hash": "373e997ddc1589367ac2e42f5bd92ac2",
+    "hash": "2e68641b0def841e62518de29ed9a6e5",
+    "content-hash": "30f1fa84641b30688547277c666f3490",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -775,6 +775,61 @@
             "time": "2016-05-27 11:37:31"
         },
         {
+            "name": "symfony/asset",
+            "version": "v2.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/asset.git",
+                "reference": "343d3a1899e988499f077a43a6d6e644fafa13d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/343d3a1899e988499f077a43a6d6e644fafa13d0",
+                "reference": "343d3a1899e988499f077a43a6d6e644fafa13d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "symfony/http-foundation": "~2.4"
+            },
+            "suggest": {
+                "symfony/http-foundation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Asset\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Asset Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-05-13 15:38:45"
+        },
+        {
             "name": "symfony/console",
             "version": "v3.1.0",
             "source": {
@@ -1307,12 +1362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a2400a8dd132f52da697ebd1e3177b68b1232a0f"
+                "reference": "9abbf273bdddd2e60a4765350f8a79894a716e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a2400a8dd132f52da697ebd1e3177b68b1232a0f",
-                "reference": "a2400a8dd132f52da697ebd1e3177b68b1232a0f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9abbf273bdddd2e60a4765350f8a79894a716e59",
+                "reference": "9abbf273bdddd2e60a4765350f8a79894a716e59",
                 "shasum": ""
             },
             "require": {
@@ -1360,7 +1415,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:17:27"
+            "time": "2016-06-13 09:11:51"
         }
     ],
     "packages-dev": [],
