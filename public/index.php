@@ -4,6 +4,7 @@ require(__DIR__ . '/../bootstrap.php');
 use Uosh\Entity\Client;
 use Uosh\Mapper\ClientMapper;
 use Uosh\Service\ClientService;
+use Symfony\Component\HttpFoundation\Request;
 
 //Containers
 $app['ClientService'] = function() use ($em) {
@@ -20,6 +21,13 @@ $app->get('/', function() use ($app, $em) {
     return Controller\HomeController::home($args);
 });
 
+$app->post('/login', function() use ($app) {
+    $r = array(
+        "response" => "success",
+        "message" => "Logando...",
+    );
+    return $app->json($r);
+});
 
 $app->get('/login', function() use ($app, $em) {
     $args = new stdClass();
