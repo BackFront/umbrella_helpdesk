@@ -38,7 +38,7 @@ $app->post('/login', function() use ($app, $em) {
     $response['data'] = $_POST;
 
 
-    return $response;
+    return json_encode($response);
 });
 
 $app->get('/login', function() use ($app, $em) {

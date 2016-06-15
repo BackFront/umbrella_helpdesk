@@ -41,12 +41,26 @@ jQuery(document).ready(function ($) {
 //                }
 //            });
             $(this).api({
-                loadingDuration: 1000,
+                loadingDuration: 100,
                 action: 'signin',
-                type: 'post',
-                data: {
-                    teste: 'ola mundo'
-                }
+                method: 'POST',
+                serializeForm: true,
+                data: this,
+                onComplete: function (json, element) {
+                    console.log('onComplete');
+                    console.log(json);
+                },
+                onSuccess: function (json, element) {
+                    console.log('onSuccess');
+                    console.log(json);
+                    alert(json.data);
+                },
+                onFailure: function (json, element) {
+                    console.log('onFailure');
+                    console.log(json);
+                },
+                onError: function (errorMessage, element) {},
+                onAbort: function (errorMessage, element) {}
             });
             return false;
         }
