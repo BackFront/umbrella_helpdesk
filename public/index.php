@@ -2,14 +2,11 @@
 require(__DIR__ . '/../bootstrap.php');
 
 use Uosh\Entity\Client;
-use Uosh\Mapper\ClientMapper;
 use Uosh\Service\ClientService;
-use Symfony\Component\HttpFoundation\Request;
 
 //Containers
 $app['ClientService'] = function() use ($em) {
     $client = new Uosh\Entity\Client();
-    //$clientMapper = new ClientMapper($em);
     return new ClientService($em);
 };
 
@@ -21,44 +18,8 @@ $app->get('/', function() use ($app, $em) {
     return Controller\HomeController::home($args);
 });
 
-$app->post('/login', function() use ($app) {
-    $r = array(
-        "response" => "success",
-        "message" => "Logando...",
-    );
-    return $app->json($r);
-});
-
-$app->get('/login', function() use ($app, $em) {
-    $args = new stdClass();
-    $args->app = $app;
-    $args->EntityManager = $em;
-    return Controller\HomeController::login($args);
-});
-
-
-$app->get('/dashboard', function() {
-    return "Bem vindo ao painel";
-});
-
-$app->get('/teste', function() use ($app) {
-    $args = new stdClass();
-    $args->app = $app;
-    return Controller\HomeController::teste($args);
-});
-
-$app->get('/teste/get/{id}', function($id) use ($app) {
-    $args = new stdClass();
-    $args->app = $app;
-    $args->userId = $id;
-    $response = (array) Controller\HomeController::testeGet($args);
-    return $app->json($response);
-});
-
-$app->get('/client/register', function() use ($app) {
-    $args = new stdClass();
-    $args->app = $app;
-    return Controller\HomeController::teste($args);
-});
+//Loading controllers include
+include_once (__DIR__ . DIRECTORY_SEPARATOR . 'login.php');
+include_once (__DIR__ . DIRECTORY_SEPARATOR . 'testes.php');
 
 $app->run();

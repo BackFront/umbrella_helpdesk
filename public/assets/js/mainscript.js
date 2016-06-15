@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
             $.ajax({
                 url: "/login",
                 type: "POST",
-                data: $( this ).serializeArray(),
+                data: $( this ).serialize(),
                 success: function( result ) {
                     console.log(result);
                 }
