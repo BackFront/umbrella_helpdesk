@@ -17,17 +17,33 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-$app->post('/login', function() use ($app) {
-    $r = array(
-        "response" => "success",
-        "message" => "Logando...",
-    );
-    return $app->json($r);
+global $em;
+
+use Uosh\Service\LoginService;
+
+$app['LoginService'] = function() use ($em) {
+    return new LoginService($em);
+};
+
+$app->post('/login', function() use ($app, $em) {
+//    $args = new stdClass();
+//    $args->app = $app;
+//    $args->EntityManager = $em;
+//    $args->datas = $_POST;
+//    $r = Controller\HomeController::actionLogin($args);
+
+
+    $response['success'] = true;
+    $response['message'] = "Login efetuado com sucesso";
+    $response['data'] = $_POST;
+
+
+    return $response;
 });
 
 $app->get('/login', function() use ($app, $em) {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
-    return Controller\HomeController::login($args);
+    return Controller\HomeController::viewLogin($args);
 });

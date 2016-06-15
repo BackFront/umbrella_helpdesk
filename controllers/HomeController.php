@@ -36,11 +36,11 @@ namespace Controller {
 
         public static function home($args)
         {
-            return self::login($args);
+            return self::viewLogin($args);
         }
 
 
-        public static function login($args)
+        public static function viewLogin($args)
         {
             $is_auth = \Umbrella\Authentication::isAuth($args->EntityManager);
             if($is_auth):
@@ -52,6 +52,23 @@ namespace Controller {
                     ->setVariable('box_title', 'Online Helpdesk');
 
             return $args->app['twig']->render('login.twig', self::$instance->getVariables("login"));
+        }
+
+
+        public static function actionLogin($args)
+        {
+            $user['user'] = $args->datas;
+            $user['pass'] = $args->datas;
+
+            if($args->app['LoginService']->doAuth()) {
+                $response['success'] = true;
+                $response['message'] = "Login efetuado com sucesso";
+                $response['data'] = $args->datas;
+            } else {
+                $response['success'] = false;
+                $response['message'] = "Não foi possivel efetuar o login";
+            }
+            return $response;
         }
 
 

@@ -32,12 +32,20 @@ jQuery(document).ready(function ($) {
             }
         },
         onSuccess: function (e) {
-            $.ajax({
-                url: "/login",
-                type: "POST",
-                data: $( this ).serialize(),
-                success: function( result ) {
-                    console.log(result);
+//            $.ajax({
+//                url: "/login",
+//                type: "POST",
+//                data: $( this ).serialize(),
+//                success: function( result ) {
+//                    console.log(result);
+//                }
+//            });
+            $(this).api({
+                loadingDuration: 1000,
+                action: 'signin',
+                type: 'post',
+                data: {
+                    teste: 'ola mundo'
                 }
             });
             return false;
