@@ -78,6 +78,7 @@ namespace Umbrella
 
             $sessionArray['token'] = $sessionEntity->getToken();
             $sessionArray['level'] = $sessionEntity->getLevel();
+            $sessionArray['user.id'] = $sessionEntity->getUser()->getId();
             $sessionArray['user.name'] = $sessionEntity->getUser()->getName();
             $sessionArray['user.email'] = $sessionEntity->getUser()->getEmail();
             $sessionArray['expiration'] = $sessionEntity->getExpiration_date();
