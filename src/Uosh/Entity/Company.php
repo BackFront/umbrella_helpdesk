@@ -25,7 +25,7 @@ namespace Uosh\Entity {
 
     /**
      * @ORM\Entity
-     * @ORM\Table(name="company")
+     * @ORM\Table(name="companys")
      */
     class Company
     {

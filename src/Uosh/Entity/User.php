@@ -19,7 +19,8 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Uosh\Entity {
+namespace Uosh\Entity
+{
 
     use Doctrine\ORM\Mapping as ORM;
 
@@ -30,36 +31,44 @@ namespace Uosh\Entity {
     class User
     {
 
+        //----------------------------------------------------------------------
         /**
          * @ORM\Id
          * @ORM\Column(type="integer")
          * @ORM\GeneratedValue
          */
         private $id;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="string", length=255)
          */
         private $name;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="string", length=255, unique=true)
          */
         private $email;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="string", length=100)
          */
         private $alias;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="string", length=255)
          */
         private $description;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="string", length=50)
          */
         private $password;
+        //----------------------------------------------------------------------
         /**
          * @ORM\Column(type="integer")
          */
         private $level;
+        //----------------------------------------------------------------------
         /**
          * @ORM\ManyToOne(targetEntity="Uosh\Entity\Company")
          * @ORM\JoinColumn(name="id_company", referencedColumnName="id")
@@ -74,36 +83,30 @@ namespace Uosh\Entity {
             return $this->id;
         }
 
-
         function getName()
         {
             return $this->name;
         }
-
 
         function getEmail()
         {
             return $this->email;
         }
 
-
         function getAlias()
         {
             return $this->alias;
         }
-
 
         function getDescription()
         {
             return $this->description;
         }
 
-
         function getPassword()
         {
             return $this->password;
         }
-
 
         function getLevel()
         {
@@ -111,57 +114,50 @@ namespace Uosh\Entity {
         }
 
 
-        //----------------------------------------------------------------------
-        // ===== SETTERS
-        //----------------------------------------------------------------------
-
         function getCompany()
         {
             return $this->company;
         }
-
-
+        
+        //----------------------------------------------------------------------
+        // ===== SETTERS
+        //----------------------------------------------------------------------
+        
         function setName($name)
         {
             $this->name = $name;
         }
-
 
         function setEmail($email)
         {
             $this->email = $email;
         }
 
-
         function setAlias($alias)
         {
             $this->alias = $alias;
         }
-
 
         function setDescription($description)
         {
             $this->description = $description;
         }
 
-
         function setPassword($password)
         {
             $this->password = $password;
         }
-
 
         function setLevel($level)
         {
             $this->level = $level;
         }
 
-
         function setCompany($company)
         {
             $this->company = $company;
         }
 
-
     }
+
 }

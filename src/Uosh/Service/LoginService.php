@@ -19,15 +19,17 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Uosh\Service {
+namespace Uosh\Service
+{
 
     use Uosh\Entity\User as UserEntity;
     use Doctrine\ORM\EntityManager;
+    use Umbrella\Authentication;
 
     class LoginService
     {
 
-        const EntityPath = 'Uosh\Entity\User';
+        const EntityUserPath = 'Uosh\Entity\User';
 
         protected $User;
         private $EntityManeger;
@@ -37,12 +39,20 @@ namespace Uosh\Service {
             $this->EntityManeger = $EntityManager;
         }
 
-
-        public function doAuth()
+        /**
+         * 
+         * @param type $datas -> $data['user'] & $data['pass']
+         * @return boolean
+         */
+        public function doAuth(array $datas)
         {
-            return true;
+            $user = $this->EntityManeger
+                    ->getRepository(self::EntityUserPath)
+                    ->findOneBy($datas);
+            if($user):
+                return Authentication::setSession($user, $this->EntityManeger);
+            endif;
+            return false;
         }
-
-
     }
 }

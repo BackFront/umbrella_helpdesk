@@ -19,7 +19,11 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Controller {
+namespace Controller
+{
+
+    use Umbrella\Authentication;
+
     class HomeController extends GeneralController implements iInstantiate
     {
 
@@ -27,25 +31,21 @@ namespace Controller {
 
         public static function instantiate()
         {
-            if(empty(self::$instance)) {
+            if(empty(self::$instance)){
                 return self::$instance = new HomeController();
             }
             return self::$instance;
         }
 
-
-        public static function home($args)
+        public static function viewHome($args)
         {
             return self::viewLogin($args);
         }
 
-
         public static function viewLogin($args)
         {
-            $is_auth = \Umbrella\Authentication::isAuth($args->EntityManager);
-            if($is_auth):
-                header("Location: /dashboard");
-            endif;
+            $args->auth['level'] = 100;
+            (self::auth($args)) ? header("Location: /dashboard") : null; //verify if the user is logged
 
             self::instantiate()->page("login")
                     ->setVariable('page_title', 'Login')
@@ -54,37 +54,32 @@ namespace Controller {
             return $args->app['twig']->render('login.twig', self::$instance->getVariables("login"));
         }
 
-
         public static function actionLogin($args)
         {
-            $user['user'] = $args->datas;
-            $user['pass'] = $args->datas;
-
-            if($args->app['LoginService']->doAuth()) {
+            $r = $args->app['LoginService']->doAuth($args->datas);
+            if($r){
                 $response['success'] = true;
                 $response['message'] = "Login efetuado com sucesso";
-                $response['data'] = $args->datas;
+                $response['data'] = $r;
             } else {
                 $response['success'] = false;
                 $response['message'] = "Não foi possivel efetuar o login";
+                $response['data'] = $r;
             }
             return $response;
         }
 
-
-        public static function teste($args = null)
+        private static function auth($args)
         {
-            $datas['name'] = "Douglas Alves";
-            $datas['email'] = "alves.douglaz@gmail.com";
-            $args->app['ClientService']->insert($datas);
+            $is_auth = new Authentication($args->EntityManager);
+            $is_auth->setLevel($args->auth['level']);
+
+            if($is_auth->isAuth()):
+                return true;
+            endif;
+            return false;
         }
-
-
-        public static function testeGet($args = null)
-        {
-            return $args->app['ClientService']->find($args->userId);
-        }
-
 
     }
+
 }

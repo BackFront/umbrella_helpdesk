@@ -19,35 +19,11 @@
  */
 global $em;
 
-use Uosh\Service\LoginService;
-
-$app['LoginService'] = function() use ($em)
-{
-    return new LoginService($em);
-};
-
-$app->post('/login', function() use ($app, $em)
-{
-    $args = new stdClass();
-    $args->app = $app;
-    $args->EntityManager = $em;
-    $args->datas = $_POST;
-    $response = Controller\HomeController::actionLogin($args);
-    return json_encode($response);
-});
-
-$app->get('/login', function() use ($app, $em)
+$app->get('/dashboard', function() use ($app, $em)
 {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
 
-    return Controller\HomeController::viewLogin($args);
-});
-
-$app->get('/logout', function() use ($app, $em)
-{
-    session_destroy();
-    header("Location: /");
-    die;
+    return Controller\DashboardController::viewIndex($args);
 });

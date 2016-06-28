@@ -32,14 +32,6 @@ jQuery(document).ready(function ($) {
             }
         },
         onSuccess: function (e) {
-//            $.ajax({
-//                url: "/login",
-//                type: "POST",
-//                data: $( this ).serialize(),
-//                success: function( result ) {
-//                    console.log(result);
-//                }
-//            });
             $(this).api({
                 loadingDuration: 100,
                 action: 'signin',
@@ -53,7 +45,13 @@ jQuery(document).ready(function ($) {
                 onSuccess: function (json, element) {
                     console.log('onSuccess');
                     console.log(json);
-                    alert(json.data);
+                    
+                    if(json.success){
+                        window.location.pathname = "/dashboard";
+                    } else {
+                        $("#login_msg_error").show();
+                    }
+                    
                 },
                 onFailure: function (json, element) {
                     console.log('onFailure');

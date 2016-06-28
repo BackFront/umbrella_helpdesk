@@ -15,11 +15,12 @@ $app->get('/', function() use ($app, $em) {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
-    return Controller\HomeController::home($args);
+    return Controller\HomeController::viewHome($args);
 });
 
 //Loading controllers include
 include_once (__DIR__ . DIRECTORY_SEPARATOR . 'login.php');
+include_once (__DIR__ . DIRECTORY_SEPARATOR . 'dashboard.php');
 include_once (__DIR__ . DIRECTORY_SEPARATOR . 'testes.php');
 
 $app->run();
