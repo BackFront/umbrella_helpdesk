@@ -45,13 +45,13 @@ jQuery(document).ready(function ($) {
                 onSuccess: function (json, element) {
                     console.log('onSuccess');
                     console.log(json);
-                    
-                    if(json.success){
+
+                    if (json.success) {
                         window.location.pathname = "/dashboard";
                     } else {
                         $("#login_msg_error").show();
                     }
-                    
+
                 },
                 onFailure: function (json, element) {
                     console.log('onFailure');
@@ -64,4 +64,13 @@ jQuery(document).ready(function ($) {
         }
 
     });
+
+
+    $('#dashboard_nav .item').tab();
+
+    function exc(elem, html) {
+        $(elem).append(html);
+    }
+
+
 });

@@ -45,7 +45,8 @@ namespace Controller
             endif;
 
             self::instantiate()->page("dashboard")
-                    ->setVariable('tituloh3', 'Olá mundo');
+                    ->setVariable('tituloh3', 'Olá mundo')
+                    ->setVariable('page_title', 'Dashboard');
 
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));
         }

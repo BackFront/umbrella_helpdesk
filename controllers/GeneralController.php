@@ -43,7 +43,9 @@ namespace Controller
                 "/assets/js/mainscript.js"
             );
             $this->generalVar['styles'] = array(
-                "/assets/dist/semantic_ui/semantic.min.css"
+                "/assets/dist/semantic_ui/semantic.min.css",
+                "/assets/css/grid_system.css",
+                "/assets/css/mainstyle.css"
             );
         }
 
