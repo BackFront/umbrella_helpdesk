@@ -19,7 +19,11 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-namespace Controller {
+namespace Controller
+{
+
+    use Umbrella\Authentication;
+
     abstract class GeneralController
     {
 
@@ -43,7 +47,6 @@ namespace Controller {
             );
         }
 
-
         public function page($page)
         {
             $this->currentPage = $page;
@@ -52,22 +55,20 @@ namespace Controller {
             return $this;
         }
 
-
         public function setVariable($key, $value)
         {
             $this->generalVar[$key] = $value;
             return $this;
         }
 
-
         public function getVariables($page)
         {
             $this->variables[$page] = $this->generalVar;
             return $this->variables[$page];
         }
-        
+
         //Verify if user is logged
-        private static function auth($args)
+        public static function auth($args)
         {
             $is_auth = new Authentication($args->EntityManager);
             $is_auth->setLevel($args->auth['level']);
@@ -78,7 +79,7 @@ namespace Controller {
             return false;
         }
 
-
     }
+
 }
              

@@ -21,9 +21,7 @@
  */
 namespace Controller
 {
-
-    use Umbrella\Authentication;
-
+    
     class DashboardController extends GeneralController implements iInstantiate
     {
 
@@ -41,7 +39,7 @@ namespace Controller
         public static function viewIndex($args)
         {
             $args->auth['level'] = 100;
-            if(!self::auth($args)):
+            if(!parent::auth($args)):
                 header("Location: /");
                 die("Don't try it!!!");
             endif;

@@ -22,8 +22,6 @@
 namespace Controller
 {
 
-    use Umbrella\Authentication;
-
     class HomeController extends GeneralController implements iInstantiate
     {
 
@@ -45,7 +43,7 @@ namespace Controller
         public static function viewLogin($args)
         {
             $args->auth['level'] = 100;
-            (self::auth($args)) ? header("Location: /dashboard") : null; //verify if the user is logged
+            (parent::auth($args)) ? header("Location: /dashboard") : null; //verify if the user is logged
 
             self::instantiate()->page("login")
                     ->setVariable('page_title', 'Login')
