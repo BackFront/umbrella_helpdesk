@@ -52,17 +52,6 @@ namespace Controller
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));
         }
 
-        private static function auth($args)
-        {
-            $is_auth = new Authentication($args->EntityManager);
-            $is_auth->setLevel($args->auth['level']);
-
-            if($is_auth->isAuth()):
-                return true;
-            endif;
-            return false;
-        }
-
     }
 
 }
