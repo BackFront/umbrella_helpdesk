@@ -48,19 +48,29 @@ namespace Uosh\Service
         public function doAuth(array $datas)
         {
             session_destroy();
+
+            /**
+             * @Note: uncomment to use authentication with DQL
+             * 
+              $UserEntity = self::EntityUserPath;
+              $query = $this->EntityManeger
+              ->createQuery("SELECT u FROM {$UserEntity} u WHERE u.email=:email AND u.password=:password")
+              ->setParameters($datas);
+
+              $user = $query->getResult();
+             */
             
-            $UserEntity = self::EntityUserPath;
-            $query = $this->EntityManeger
-                    ->createQuery("SELECT u FROM {$UserEntity} u WHERE u.email=:email AND u.password=:password")
-                    ->setParameters($datas);
-                    
-            $user = $query->getResult();
             
+            $user = $this->EntityManeger
+                    ->getRepository(self::EntityUserPath)
+                    ->findOneBy($datas);
+
+
             /*
              * @alterar criar verificacao de senha criptografada
              */
-            
-            if (!empty($user[0])):
+
+            if (!empty($user)):
                 return Authentication::setSession($user, $this->EntityManeger);
             endif;
             return false;
