@@ -47,6 +47,9 @@ namespace Uosh\Service
          */
         public function doAuth(array $datas)
         {
+            if (empty($datas)):
+                return false;
+            endif;
             session_destroy();
 
             /**
@@ -59,8 +62,6 @@ namespace Uosh\Service
 
               $user = $query->getResult();
              */
-            
-            
             $user = $this->EntityManeger
                     ->getRepository(self::EntityUserPath)
                     ->findOneBy($datas);
@@ -71,7 +72,8 @@ namespace Uosh\Service
              */
 
             if (!empty($user)):
-                return Authentication::setSession($user, $this->EntityManeger);
+                $Authentication = new Authentication($this->EntityManeger);
+                return $Authentication->setSession($user, $this->EntityManeger);
             endif;
             return false;
         }

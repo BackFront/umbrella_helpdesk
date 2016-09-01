@@ -19,6 +19,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+
 namespace Umbrella
 {
 
@@ -46,7 +47,7 @@ namespace Umbrella
 
         public function getCurrentUser()
         {
-            if($this->isAuth()) :
+            if ($this->isAuth()) :
                 return $_SESSION[self::session_name];
             else:
                 return null;
@@ -61,7 +62,7 @@ namespace Umbrella
          */
         public function setSession($user, EntityManager $EntityManeger)
         {
-            if($this->isAuth($EntityManeger))
+            if ($this->isAuth($EntityManeger))
                 return $_SESSION[self::session_name];
 
             $sessionEntity = new SessionEntity();
@@ -89,9 +90,9 @@ namespace Umbrella
         public function isAuth($EntityManeger = null)
         {
             $EntityManeger = ($EntityManeger != null)? : $this->EntityManeger;
-            if(empty($_SESSION[self::session_name]) || $_SESSION[self::session_name]['level'] < $this->level):
+            if (empty($_SESSION[self::session_name]) || $_SESSION[self::session_name]['level'] < $this->level):
 
-                if(isset($_SESSION[self::session_name])){
+                if (isset($_SESSION[self::session_name])) {
                     unset($_SESSION[self::session_name]);
                     session_destroy();
                 }
@@ -103,13 +104,16 @@ namespace Umbrella
                     'id_user' => $_SESSION[self::session_name]['user.id'],
                     'token' => $_SESSION[self::session_name]['token'],
                 ]);
-
+                
+                var_dump($session);
+                die();
                 /**
                  * @alterar Criar verificação entre a entidade do usuario retorinado pela variavel $Session e os dados gravados na sessão
                  * ex:
                  * if($Session->getUser->getEmail == $_SESSION['user_email'] && $Session->getUser->getPassword == $_SESSION['user_password']) return true;
                  */
-                if($session){
+            
+                if ($session) {
                     return $session;
                 } else {
                     unset($_SESSION[self::session_name]);
