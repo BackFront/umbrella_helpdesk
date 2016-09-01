@@ -59,16 +59,16 @@ namespace Umbrella
          * @param \Umbrella\EntityManager $EntityManeger
          * @return type
          */
-        public static function setSession($user, EntityManager $EntityManeger)
+        public function setSession($user, EntityManager $EntityManeger)
         {
-//            if($this->isAuth($EntityManeger))
-//                return $_SESSION[self::session_name];
+            if($this->isAuth($EntityManeger))
+                return $_SESSION[self::session_name];
 
             $sessionEntity = new SessionEntity();
             $sessionEntity->setUser($user);
             $sessionEntity->setToken(md5(time() . $user->getEmail()));
             $sessionEntity->setLevel($user->getLevel());
-            $sessionEntity->setExpiration_date(new \DateTime("now"));
+            $sessionEntity->setExpiration_date(new \DateTime("tomorrow"));
             $sessionEntity->setCompany($user->getCompany());
             $sessionEntity->setAccess_time(new \DateTime("now"));
             $sessionEntity->setAccess_ip($_SERVER['REMOTE_ADDR']);
@@ -100,6 +100,7 @@ namespace Umbrella
                 $session = $EntityManeger->getRepository(self::EntitySessionPath)
                         ->findOneBy([
                     'access_ip' => $_SERVER['REMOTE_ADDR'],
+                    'id_user' => $_SESSION[self::session_name]['user.id'],
                     'token' => $_SESSION[self::session_name]['token'],
                 ]);
 

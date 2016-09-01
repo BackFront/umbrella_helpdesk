@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project Name: UOSH
  * Project URI: https://github.com/backfront/Uosh
@@ -17,21 +18,24 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+use Uosh\Service\LoginService;
+use Symfony\Component\HttpFoundation\Request;
+
 global $em;
 
-use Uosh\Service\LoginService;
 
 $app['LoginService'] = function() use ($em)
 {
     return new LoginService($em);
 };
 
-$app->post('/login', function() use ($app, $em)
-{
+$app->post('/login', function(Request $request) use ($app, $em)
+{   
+    $datas = (array) json_decode($request->getContent());
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
-    $args->datas = $_POST;
+    $args->datas = $datas;
     $response = Controller\HomeController::actionLogin($args);
     return json_encode($response);
 });

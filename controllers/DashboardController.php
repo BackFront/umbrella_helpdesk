@@ -39,13 +39,13 @@ namespace Controller
         public static function viewIndex($args)
         {
             $args->auth['level'] = 100;
+            
             if(!parent::auth($args)):
                 header("Location: /");
                 die("Don't try it!!!");
             endif;
 
             self::instantiate()->page("dashboard")
-                    ->setVariable('tituloh3', 'Olá mundo')
                     ->setVariable('page_title', 'Dashboard');
 
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));

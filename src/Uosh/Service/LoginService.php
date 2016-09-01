@@ -19,6 +19,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+
 namespace Uosh\Service
 {
 
@@ -46,13 +47,25 @@ namespace Uosh\Service
          */
         public function doAuth(array $datas)
         {
-            $user = $this->EntityManeger
-                    ->getRepository(self::EntityUserPath)
-                    ->findOneBy($datas);
-            if($user):
+            session_destroy();
+            
+            $UserEntity = self::EntityUserPath;
+            $query = $this->EntityManeger
+                    ->createQuery("SELECT u FROM {$UserEntity} u WHERE u.email=:email AND u.password=:password")
+                    ->setParameters($datas);
+                    
+            $user = $query->getResult();
+            
+            /*
+             * @alterar criar verificacao de senha criptografada
+             */
+            
+            if (!empty($user[0])):
                 return Authentication::setSession($user, $this->EntityManeger);
             endif;
             return false;
         }
+
     }
+
 }

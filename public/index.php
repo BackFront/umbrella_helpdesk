@@ -10,12 +10,15 @@ $app['ClientService'] = function() use ($em) {
     return new ClientService($em);
 };
 
-//Routs
 $app->get('/', function() use ($app, $em) {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
     return Controller\HomeController::viewHome($args);
+});
+
+$app->get('/tikets/open', function() use ($app, $em) {
+    return 'ola';
 });
 
 //Loading controllers include
