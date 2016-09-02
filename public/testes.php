@@ -40,3 +40,16 @@ $app->get('/client/register', function() use ($app) {
     $args->app = $app;
     return Controller\HomeController::teste($args);
 });
+
+//retorna todas as sessoes
+$app->get('/teste/session', function() use ($app) {
+    var_dump($_SESSION);
+    return '<hr>';
+});
+
+//destroi todas as sessoes
+$app->get('/teste/session/destroy', function() {
+    session_destroy();
+    var_dump($_SESSION);
+    return '<hr>';
+});

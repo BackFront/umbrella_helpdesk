@@ -101,26 +101,26 @@ namespace Umbrella
                 $session = $EntityManeger->getRepository(self::EntitySessionPath)
                         ->findOneBy([
                     'access_ip' => $_SERVER['REMOTE_ADDR'],
-                    'id_user' => $_SESSION[self::session_name]['user.id'],
-                    'token' => $_SESSION[self::session_name]['token'],
+                    'token' => $_SESSION[self::session_name]['token']
                 ]);
-                
-                var_dump($session);
-                die();
-                /**
-                 * @alterar Criar verificação entre a entidade do usuario retorinado pela variavel $Session e os dados gravados na sessão
-                 * ex:
-                 * if($Session->getUser->getEmail == $_SESSION['user_email'] && $Session->getUser->getPassword == $_SESSION['user_password']) return true;
-                 */
-            
+
                 if ($session) {
-                    return $session;
+                    return $this->isAutentichSession($session);
                 } else {
                     unset($_SESSION[self::session_name]);
                     session_destroy();
                     return false;
                 }
             endif;
+        }
+        
+        protected function isAutentichSession(SessionEntity $Session)
+        {
+            $user = $Session->getUser();
+            if ($user->getId() == $_SESSION[self::session_name]['user.id'] && $user->getEmail() == $_SESSION[self::session_name]['user.email']) {
+                return $_SESSION[self::session_name];
+            }
+            return false;
         }
 
     }

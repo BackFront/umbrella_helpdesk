@@ -47,10 +47,11 @@ namespace Uosh\Service
          */
         public function doAuth(array $datas)
         {
-            if (empty($datas)):
+            if (empty($datas))
                 return false;
-            endif;
-            session_destroy();
+
+            //don't uncomment
+            //session_destroy();
 
             /**
              * @Note: uncomment to use authentication with DQL
@@ -62,14 +63,14 @@ namespace Uosh\Service
 
               $user = $query->getResult();
              */
+            //
+            /** 
+             * @alterar criar verificacao de senha criptografada 
+             **/
+
             $user = $this->EntityManeger
                     ->getRepository(self::EntityUserPath)
                     ->findOneBy($datas);
-
-
-            /*
-             * @alterar criar verificacao de senha criptografada
-             */
 
             if (!empty($user)):
                 $Authentication = new Authentication($this->EntityManeger);
