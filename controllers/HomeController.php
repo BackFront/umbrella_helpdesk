@@ -36,15 +36,20 @@ namespace Controller
         }
 
         public static function viewHome($args)
-        {
+        {            
             return self::viewLogin($args);
         }
 
         public static function viewLogin($args)
         {
+            //verify if the user is logged   
             $args->auth['level'] = 100;
-            (parent::auth($args)) ? header("Location: /dashboard") : null; //verify if the user is logged
-
+            
+            if(parent::auth($args)):
+                header("Location: /dashboard");
+                die("Don't try it!!!");
+            endif;
+            
             self::instantiate()->page("login")
                     ->setVariable('page_title', 'Login')
                     ->setVariable('box_title', 'Online Helpdesk');

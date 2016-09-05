@@ -11,53 +11,118 @@
                     <div class="row">
                         <nav class="ui vertical pointing menu col-md-2" id="dashboard_nav">
                             <div class="row">
-                                <a class="item" data-tab="opened">
+                                <a class="item active" data-tab="opened">
                                     Abertos
                                     <div class="ui label">5</div>
                                 </a>
-                                <a class="item active" data-tab="inprogress">
+                                <a class="item" data-tab="inprogress">
                                     Em progresso
                                     <div class="ui label">2</div>
                                 </a> 
-                                <a class="item"> 
-                                    Aguardando 
+                                <a class="item" data-tab="waiting"> 
+                                    Aguardando
                                     <div class="ui label">--</div>
                                 </a> 
-                                <a class="item"> 
-                                    Finalizados 
+                                <a class="item" data-tab="closed"> 
+                                    Fechados 
                                     <div class="ui label">13</div>
                                 </a>
                             </div>
                         </nav>
 
                         <section class="col-md-10">
-                            <div class="ui bottom attached  tab segment" data-tab="open" id="teste">
-                                First
+                            <div class="ui bottom attached  tab segment active" data-tab="opened" id="teste">
+                                Chamados Abertos
+
+                                <div class="ui top attached tabular menu">
+                                    <a class="item active" data-tab="all">Todos</a>
+                                    <a class="item" data-tab="high">Prioridade Alta</a>
+                                    <a class="item" data-tab="mid">Prioridade Média</a>
+                                    <a class="item" data-tab="low">Prioridade Baixa</a>
+                                </div>
+                                <div class="ui bottom attached tab segment active" data-tab="all">
+                                    todos
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="high">
+                                    Prioridade alta
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="mid">
+                                    Prioridade media
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="low">
+                                    Prioridade baixa
+                                </div>
                             </div>
                             <div class="ui bottom attached tab segment" data-tab="inprogress">
-                                Second
+                                Em progresso
+
+                                <div class="ui top attached tabular menu">
+                                    <a class="item active" data-tab="all">Todos</a>
+                                    <a class="item" data-tab="high">Prioridade Alta</a>
+                                    <a class="item" data-tab="mid">Prioridade Média</a>
+                                    <a class="item" data-tab="low">Prioridade Baixa</a>
+                                </div>
+                                <div class="ui bottom attached tab segment active" data-tab="all">
+                                    todos
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="high">
+                                    Prioridade alta
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="mid">
+                                    Prioridade media
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="low">
+                                    Prioridade baixa
+                                </div>
+                            </div>
+                            <div class="ui bottom attached tab segment" data-tab="waiting">
+                                Aguardando
+
+                                <div class="ui top attached tabular menu">
+                                    <a class="item active" data-tab="all">Todos</a>
+                                    <a class="item" data-tab="high">Prioridade Alta</a>
+                                    <a class="item" data-tab="mid">Prioridade Média</a>
+                                    <a class="item" data-tab="low">Prioridade Baixa</a>
+                                </div>
+                                <div class="ui bottom attached tab segment active" data-tab="all">
+                                    todos
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="high">
+                                    Prioridade alta
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="mid">
+                                    Prioridade media
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="low">
+                                    Prioridade baixa
+                                </div>
                             </div>
                             <div class="ui bottom attached tab segment" data-tab="closed">
-                                Third
+                                Fechados
+
+                                <div class="ui top attached tabular menu">
+                                    <a class="item active" data-tab="all">Todos</a>
+                                    <a class="item" data-tab="high">Prioridade Alta</a>
+                                    <a class="item" data-tab="mid">Prioridade Média</a>
+                                    <a class="item" data-tab="low">Prioridade Baixa</a>
+                                </div>
+                                <div class="ui bottom attached tab segment active" data-tab="all">
+                                    todos
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="high">
+                                    Prioridade alta
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="mid">
+                                    Prioridade media
+                                </div>
+                                <div class="ui bottom attached tab segment" data-tab="low">
+                                    Prioridade baixa
+                                </div>
                             </div>
                         </section>
                     </div>
                 </div>
 
-                <div class="ui top attached tabular menu">
-                    <a class="item active" data-tab="first">First</a>
-                    <a class="item" data-tab="second">Second</a>
-                    <a class="item" data-tab="third">Third</a>
-                </div>
-                <div class="ui bottom attached tab segment active" data-tab="first">
-                    First
-                </div>
-                <div class="ui bottom attached tab segment" data-tab="second">
-                    Second
-                </div>
-                <div class="ui bottom attached tab segment" data-tab="third">
-                    Third
-                </div>
             {% endblock %}
         </main>
     </div>
