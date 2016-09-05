@@ -24,6 +24,7 @@ $app->get('/tikets/open', function() use ($app, $em) {
 //Loading controllers include
 include_once (__DIR__ . DIRECTORY_SEPARATOR . 'login.php');
 include_once (__DIR__ . DIRECTORY_SEPARATOR . 'dashboard.php');
+include_once (__DIR__ . DIRECTORY_SEPARATOR . 'ticket.php');
 include_once (__DIR__ . DIRECTORY_SEPARATOR . 'testes.php');
 
 $app->run();
