@@ -1,7 +1,7 @@
 <?php
 /**
  * <b>Home</b>
- * 
+ *
  * Project Name: UOSH
  * Project URI: https://github.com/backfront/Uosh
  * Description: Umbrella Online Systen Helpdesk
@@ -9,11 +9,11 @@
  * Author: Douglas Alves
  * Author URI: http://alvesdouglas.com.br/
  * License: Apache License 2.0
- * 
+ *
  * @package Umbrella
  * @subpackage UOSH
  * @version 1.0.0
- * 
+ *
  * @author Douglas Alves <alves.douglaz@gmail.com>
  * @link https://github.com/backfront/ Project Repository
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
@@ -42,32 +42,65 @@ namespace Controller
             return $args->app['twig']->render('components/card.twig', array(
                         "itens" => [
                             array(
-                                "header" => "#9abe75c9ee6",
+                                "id" => 2356,
+                                "hash" => "#9abe75c9ee6",
                                 "date" => "22/jan/2016",
-                                "description" => "Hello World",
+                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                                "label" => "red",
+                                "priority" => "Urgente",
                                 "client" => [
-                                    "id" => "15",
-                                    "name" => "Igeeker"
-                                ]
-                            ),
+                                    "id" => 21,
+                                    "name" => "Pedro",
+                                    "company" => [
+                                        "id" => "Igeeker",
+                                        "name" => "Igeeker"
+                                    ]
+                                ]),
                             array(
-                                "header" => "#9abe75c9ee6",
+                                "id" => 1554,
+                                "hash" => "#9abe75c9ee6",
                                 "date" => "22/jan/2016",
-                                "description" => "Hello World",
+                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                                "label" => "blue",
+                                "priority" => "Normal",
                                 "client" => [
-                                    "id" => "15",
-                                    "name" => "Igeeker"
-                                ]
-                            ),
+                                    "id" => 15,
+                                    "name" => "Felipe",
+                                    "company" => [
+                                        "id" => 4456,
+                                        "name" => "SNDDigitall"
+                                    ]
+                                ]),
                             array(
-                                "header" => "#9abe75c9ee6",
+                                "id" => 1645,
+                                "hash" => "#9abe75c9ee6",
                                 "date" => "22/jan/2016",
-                                "description" => "Hello World",
+                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                                "label" => "orange",
+                                "priority" => "Alta",
                                 "client" => [
-                                    "id" => "15",
-                                    "name" => "Igeeker"
-                                ]
-                            )
+                                    "id" => 1,
+                                    "name" => "Douglas",
+                                    "company" => [
+                                        "id" => 123854,
+                                        "name" => "OpenCode"
+                                    ]
+                                ]),
+                            array(
+                                "id" => 1645,
+                                "hash" => "#9abe75c9ee6",
+                                "date" => "22/jan/2016",
+                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                                "label" => "black",
+                                "priority" => "Fechado",
+                                "client" => [
+                                    "id" => 1,
+                                    "name" => "Douglas",
+                                    "company" => [
+                                        "id" => 123854,
+                                        "name" => "OpenCode"
+                                    ]
+                                ])
                         ]
             ));
         }
