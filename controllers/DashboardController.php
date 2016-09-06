@@ -19,9 +19,10 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+
 namespace Controller
 {
-    
+
     class DashboardController extends GeneralController implements iInstantiate
     {
 
@@ -30,23 +31,59 @@ namespace Controller
 
         public static function instantiate()
         {
-            if(empty(self::$instance)){
+            if (empty(self::$instance)) {
                 return self::$instance = new self;
             }
             return self::$instance;
         }
 
+        static function viewCards($args)
+        {
+            return $args->app['twig']->render('components/card.twig', array(
+                        "itens" => [
+                            array(
+                                "header" => "#9abe75c9ee6",
+                                "date" => "22/jan/2016",
+                                "description" => "Hello World",
+                                "client" => [
+                                    "id" => "15",
+                                    "name" => "Igeeker"
+                                ]
+                            ),
+                            array(
+                                "header" => "#9abe75c9ee6",
+                                "date" => "22/jan/2016",
+                                "description" => "Hello World",
+                                "client" => [
+                                    "id" => "15",
+                                    "name" => "Igeeker"
+                                ]
+                            ),
+                            array(
+                                "header" => "#9abe75c9ee6",
+                                "date" => "22/jan/2016",
+                                "description" => "Hello World",
+                                "client" => [
+                                    "id" => "15",
+                                    "name" => "Igeeker"
+                                ]
+                            )
+                        ]
+            ));
+        }
+
         public static function viewIndex($args)
         {
             $args->auth['level'] = 100;
-            
-            if(!parent::auth($args)):
+
+            if (!parent::auth($args)):
                 header("Location: /");
                 die("Don't try it!!!");
             endif;
 
             self::instantiate()->page("dashboard")
-                    ->setVariable('page_title', 'Dashboard');
+                    ->setVariable('page_title', 'Dashboard')
+                    ->setVariable('cards_all', self::viewCards($args));
 
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));
         }

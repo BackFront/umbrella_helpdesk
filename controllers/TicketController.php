@@ -42,7 +42,11 @@ namespace Controller
              * @alterar inserir verificacao if(current_user_can('admin_tickets'))
              */
             $limit = (!empty($args->param['limit'])) ? $args->param['limit'] : null;
-            return $args->app['TicketService']->setLimit($limit)->getTickets();
+            $status = (!empty($args->param['status'])) ? $args->param['status'] : null;
+            return $args->app['TicketService']
+                    ->setLimit($limit)
+                    //->setStatus($status)
+                    ->getTickets();
         }
 
     }

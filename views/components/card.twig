@@ -1,0 +1,23 @@
+{% for card in itens %}
+    <div class="col-md-3">
+        <div class="ui card">
+            <div class="content">
+                {% block content %}
+                    <div class="header">{{ card.header }}</div>
+                    <div class="meta">
+                        <data>{{ card.date }}</data>
+                        <a href="#client">{{ card.client.name }}</a>
+                    </div>
+                    <p>{{ card.description }}</p>
+                    
+                    <div class="extra content">
+                        <div class="ui buttons">
+                            <div class="ui basic green button col-md-6">Approve</div>
+                            <div class="ui basic red button col-md-6">Decline</div>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endfor %}

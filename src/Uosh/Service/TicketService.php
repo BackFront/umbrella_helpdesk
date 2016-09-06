@@ -33,6 +33,7 @@ namespace Uosh\Service
 
         protected $Ticket;
         protected $limit = null;
+        protected $status = null;
         private $EntityManeger;
 
         function __construct(EntityManager $EntityManager)
@@ -45,20 +46,21 @@ namespace Uosh\Service
             $this->limit = $limit;
             return $this;
         }
-
-        public function getTickets($status = "opened")
+        
+        public function setStatus($status)
         {
-            if (!$this->verifyStatus($status))
-                return false;
+            $this->status = $status;
+            return $this;
+        }
 
+        public function getTickets()
+        {
             $limit = (empty($this->limit) ? 10000 : $this->limit);
 
             $query = $this->EntityManeger->createQueryBuilder()
                     ->select('t')
                     ->from(self::EntityTicketPath, 't')
-                    ->where('t.status = :status')
                     ->setMaxResults($limit)
-                    ->setParameter('status', $status)
                     ->getQuery();
 
             $tickets = $query->getArrayResult();
@@ -74,12 +76,17 @@ namespace Uosh\Service
         {
             
         }
+        
+        public function getTicketsByStatus($status = null)
+        {
+            
+        }
 
         protected function verifyStatus($status)
         {
             switch ($status):
                 case 'opened' :
-                case 'waiting':
+                case 'waitting':
                 case 'closed' :
                 case 'inprogress' : return true;
             endswitch;
