@@ -17,14 +17,37 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
-$app->get('/dashboard', function() {
-    return "Bem vindo ao painel";
-});
-
-$app->get('/teste', function() use ($app) {
+$app->get('/teste', function() use ($app, $em) {
     $args = new stdClass();
     $args->app = $app;
-    return Controller\HomeController::teste($args);
+
+    
+    
+    
+//    
+//>select('a', 'u')
+//        ->from('Credit\Entity\UserCreditHistory', 'a')
+//        ->leftJoin('a.user', 'u')
+//        ->where('u = :user')
+//        ->setParameter('user', $users)
+//        ->orderBy('a.created_at', 'DESC');
+    
+    
+    
+    //teste left join
+    
+    
+    $query = $em->createQueryBuilder()
+            ->select('u', 'c')
+            ->from('Uosh\Entity\Company', 'u')
+            ->leftJoin('u.id_user', 'c')
+            ->getQuery()
+            ->getArrayResult();
+
+    $tickets = (array)$query[0];
+    return $app->json($tickets);
+
+    //return Controller\HomeController::teste($args);
 });
 
 $app->get('/teste/get/{id}', function($id) use ($app) {

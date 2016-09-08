@@ -46,7 +46,7 @@ namespace Uosh\Service
             $this->limit = $limit;
             return $this;
         }
-        
+
         public function setStatus($status)
         {
             $this->status = $status;
@@ -57,14 +57,24 @@ namespace Uosh\Service
         {
             $limit = (empty($this->limit) ? 10000 : $this->limit);
 
-            $query = $this->EntityManeger->createQueryBuilder()
-                    ->select('t')
-                    ->from(self::EntityTicketPath, 't')
-                    ->setMaxResults($limit)
-                    ->getQuery();
-
-            $tickets = $query->getArrayResult();
-
+            if ($this->status == null):
+                $query = $this->EntityManeger->createQueryBuilder()
+                        ->select('t', 'u')
+                        ->from(self::EntityTicketPath, 't')
+                        ->setMaxResults($limit)
+                        ->join('t.user', 'u')
+                        ->getQuery();
+            else :
+                $query = $this->EntityManeger->createQueryBuilder()
+                        ->select('t', 'u')
+                        ->from(self::EntityTicketPath, 't')
+                        ->leftJoin('t.user', 'u')
+                        ->where("t.status = :status")
+                        ->setMaxResults($limit)
+                        ->setParameter("status", $this->status)
+                        ->getQuery();
+            endif;
+            $tickets = \Umbrella\Helper::extractArray($query->getArrayResult());
             if (!empty($tickets)):
                 return $tickets;
             endif;
@@ -76,7 +86,7 @@ namespace Uosh\Service
         {
             
         }
-        
+
         public function getTicketsByStatus($status = null)
         {
             

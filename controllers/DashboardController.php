@@ -37,74 +37,6 @@ namespace Controller
             return self::$instance;
         }
 
-        static function viewCards($args)
-        {
-            return $args->app['twig']->render('components/card.twig', array(
-                        "itens" => [
-                            array(
-                                "id" => 2356,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "red",
-                                "priority" => "Urgente",
-                                "client" => [
-                                    "id" => 21,
-                                    "name" => "Pedro",
-                                    "company" => [
-                                        "id" => "Igeeker",
-                                        "name" => "Igeeker"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1554,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "blue",
-                                "priority" => "Normal",
-                                "client" => [
-                                    "id" => 15,
-                                    "name" => "Felipe",
-                                    "company" => [
-                                        "id" => 4456,
-                                        "name" => "SNDDigitall"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1645,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "orange",
-                                "priority" => "Alta",
-                                "client" => [
-                                    "id" => 1,
-                                    "name" => "Douglas",
-                                    "company" => [
-                                        "id" => 123854,
-                                        "name" => "OpenCode"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1645,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "black",
-                                "priority" => "Fechado",
-                                "client" => [
-                                    "id" => 1,
-                                    "name" => "Douglas",
-                                    "company" => [
-                                        "id" => 123854,
-                                        "name" => "OpenCode"
-                                    ]
-                                ])
-                        ]
-            ));
-        }
-
         public static function viewIndex($args)
         {
             $args->auth['level'] = 100;
@@ -115,8 +47,7 @@ namespace Controller
             endif;
 
             self::instantiate()->page("dashboard")
-                    ->setVariable('page_title', 'Dashboard')
-                    ->setVariable('cards_all', self::viewCards($args));
+                    ->setVariable('page_title', 'Dashboard');
 
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));
         }

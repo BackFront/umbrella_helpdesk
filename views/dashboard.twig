@@ -11,7 +11,11 @@
                     <div class="row">
                         <nav class="ui vertical pointing menu col-md-2" id="dashboard_nav">
                             <div class="row">
-                                <a class="item active" data-tab="opened">
+                                <a class="item active" data-tab="all">
+                                    Todos
+                                    <div class="ui label">5</div>
+                                </a>
+                                <a class="item" data-tab="opened">
                                     Abertos
                                     <div class="ui label">5</div>
                                 </a>
@@ -31,85 +35,15 @@
                         </nav>
 
                         <section class="col-md-10">
-                            <div class="ui bottom attached  tab segment active" data-tab="opened" id="teste">
-
+                            <div class="ui bottom attached  tab segment active" id="response">
                                 <div class="ui top attached tabular menu">
-                                    <a class="item active" data-tab="all">Todos</a>
+                                    <a class="item active" data-tab="alls">Todos</a>
                                     <a class="item" data-tab="high">Prioridade Alta</a>
                                     <a class="item" data-tab="mid">Prioridade Média</a>
                                     <a class="item" data-tab="low">Prioridade Baixa</a>
                                 </div>
-                                <div class="ui bottom attached tab segment active" data-tab="all">
-                                    <div class="row">
-                                        {{ cards_all | raw }}
-                                    </div>
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="high">
-                                    Prioridade alta
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="mid">
-                                    Prioridade media
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="low">
-                                    Prioridade baixa
-                                </div>
-                            </div>
-                            <div class="ui bottom attached tab segment" data-tab="inprogress">
-                                Em progresso
-
-                                <div class="ui top attached tabular menu">
-                                    <a class="item active" data-tab="all">Todos</a>
-                                    <a class="item" data-tab="high">Prioridade Alta</a>
-                                    <a class="item" data-tab="mid">Prioridade Média</a>
-                                    <a class="item" data-tab="low">Prioridade Baixa</a>
-                                </div>
-                                <div class="ui bottom attached tab segment active" data-tab="all">
-                                    todos
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="high">
-                                    Prioridade alta
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="mid">
-                                    Prioridade media
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="low">
-                                    Prioridade baixa
-                                </div>
-                            </div>
-                            <div class="ui bottom attached tab segment" data-tab="waiting">
-                                Aguardando
-
-                                <div class="ui top attached tabular menu">
-                                    <a class="item active" data-tab="all">Todos</a>
-                                    <a class="item" data-tab="high">Prioridade Alta</a>
-                                    <a class="item" data-tab="mid">Prioridade Média</a>
-                                    <a class="item" data-tab="low">Prioridade Baixa</a>
-                                </div>
-                                <div class="ui bottom attached tab segment active" data-tab="all">
-                                    todos
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="high">
-                                    Prioridade alta
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="mid">
-                                    Prioridade media
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="low">
-                                    Prioridade baixa
-                                </div>
-                            </div>
-                            <div class="ui bottom attached tab segment" data-tab="closed">
-                                Fechados
-
-                                <div class="ui top attached tabular menu">
-                                    <a class="item active" data-tab="all">Todos</a>
-                                    <a class="item" data-tab="high">Prioridade Alta</a>
-                                    <a class="item" data-tab="mid">Prioridade Média</a>
-                                    <a class="item" data-tab="low">Prioridade Baixa</a>
-                                </div>
-                                <div class="ui bottom attached tab segment active" data-tab="all">
-                                    todos
-                                </div>
+                                <div class="ui bottom attached tab segment active" data-tab="all"></div>
+                                
                                 <div class="ui bottom attached tab segment" data-tab="high">
                                     Prioridade alta
                                 </div>

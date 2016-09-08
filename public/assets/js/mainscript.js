@@ -1,7 +1,8 @@
 jQuery(document).ready(function ($) {
     $.fn.api.settings.api = {
         'signin': '/login',
-        'get open tikets': '/tikets/open'
+        'get open tikets': '/tikets/open',
+        'get tikets': '/tikets'
     };
     $('.ui.form').form({
         fields: {
@@ -68,54 +69,10 @@ jQuery(document).ready(function ($) {
 
 
     $('#dashboard_nav .item').tab({
-        context: '#teste',
+        cache: false,
+        context: '#response',
         auto: true,
-        path: '/modules/tab.html'
+        path: '/view/tickets'
     });
 
-    $('.menu .item').tab({
-        cache: false,
-        apiSettings: {
-            action: 'get open tikets',
-            mockResponse: function (settings) {
-                var response = {
-                    first: 'AJAX Tab One',
-                    second: 'AJAX Tab Two',
-                    third: 'AJAX Tab Three'
-                };
-                return response[settings.urlData.tab];
-            },
-            onResponse: function (response) {
-                // make some adjustments to response
-                alert();
-            },
-            successTest: function (response) {
-                // test whether a JSON response is valid
-                alert();
-            },
-            onComplete: function (response) {
-                // always called after XHR complete
-                alert();
-            },
-            onSuccess: function (response) {
-                // valid response and response.success = true
-                alert();
-            },
-            onFailure: function (response) {
-                // request failed, or valid response but response.success = false
-                alert();
-            },
-            onError: function (errorMessage) {
-                // invalid response
-                alert();
-            },
-            onAbort: function (errorMessage) {
-                // navigated to a new page, CORS issue, or user canceled request
-                alert();
-            }
-        },
-        context: 'parent',
-        auto: true,
-        path: '/'
-    });
 });

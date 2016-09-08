@@ -1,0 +1,29 @@
+<div class="row">
+    {% for card in itens %}
+        <div class="col-md-3">
+            <div class="ui card">
+                {% block content %}
+                    <div class="content">
+                        <a class="header" href="#ticket_{{ card.id }}">{{ card.hash }}</a>
+                        <div class="ui top right attached basic label {{ card.label }}">{{card.priority}}</div>
+                    </div>
+                    <div class="content">
+                        <div class="meta">
+                            <time datetime="{{ card.date }}">{{ card.date }}</time>
+                        </div>
+                        <p>{{ card.description }}</p>
+
+                    </div>
+                    <div class="extra content">
+                        <strong>
+                            <a href="#client_{{ card.client.id }}">{{ card.client.name }}</a>
+                        </strong>
+                        <div class="meta right floated">
+                            <a href="#company_{{ card.client.company.id }}">{{ card.client.company.name }}</a>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

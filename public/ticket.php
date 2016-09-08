@@ -25,22 +25,33 @@ $app['TicketService'] = function() use ($em) {
     return new TicketService($em);
 };
 
-$app->get('/tickets/{limit}', function($limit) use ($app, $em)
+$app->get('/tickets', function() use ($app, $em)
 {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
-    $args->param['limit'] = $limit;
 
-    return Controller\TicketController::getTickets($args);
+    $resp = Controller\TicketController::getTickets($args);
+    return $app->json($resp);
 });
 
-$app->get('/tickets/', function() use ($app, $em)
+$app->get('/tickets/{status}', function($status) use ($app, $em)
 {
     $args = new stdClass();
     $args->app = $app;
     $args->EntityManager = $em;
+    $args->param['status'] = $status;
+    
+    $resp = Controller\TicketController::getTickets($args);
+    return $app->json($resp);
+});
 
-    $resp = (array) Controller\TicketController::getTickets($args);
-    return json_encode($resp);
+$app->get('/view/tickets/{status}', function($status) use ($app, $em)
+{
+    $args = new stdClass();
+    $args->app = $app;
+    $args->EntityManager = $em;
+    $args->param['status'] = ($status == 'all') ? null : $status;
+
+    return $app->json(Controller\TicketController::viewTickets($args));
 });
