@@ -47,7 +47,10 @@ namespace Controller
             endif;
 
             self::instantiate()->page("dashboard")
-                    ->setVariable('page_title', 'Dashboard');
+                    ->setVariable('page_title', 'Dashboard')
+                    ->setVariable('scripts', '/assets/app/controllers/ctrlDashboard.js')
+                    ->setVariable('scripts_footer', null)
+                    ;
 
             return $args->app['twig']->render('dashboard.twig', self::$instance->getVariables("dashboard"));
         }

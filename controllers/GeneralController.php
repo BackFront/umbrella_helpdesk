@@ -41,7 +41,7 @@ namespace Controller
             $this->generalVar['scripts'] = array(
                 "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js",
                 "/assets/dist/semantic_ui/semantic.min.js",
-                "https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js",
+                "https://code.angularjs.org/1.0.8/angular.min.js",
                 "/assets/js/mainscript.js"
             );
             $this->generalVar['styles'] = array(

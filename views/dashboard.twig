@@ -1,65 +1,66 @@
 {% include 'header.twig' %}
-<div class="container-fluid debug">
-    <div class="row">
-        {% include 'dashboard/nav.twig' %}
-        <main class="col-xs-12 col-lg-10 col-md-10">
-            {% block content %}
-                <div class="ui basic segment">
-                    <h2 class="ui dividing header">
-                        {{ page_title }}
-                    </h2>
-                    <div class="row">
-                        <nav class="ui vertical pointing menu col-md-2" id="dashboard_nav">
-                            <div class="row">
-                                <a class="item active" data-tab="all">
-                                    Todos
-                                    <div class="ui label">5</div>
-                                </a>
-                                <a class="item" data-tab="opened">
-                                    Abertos
-                                    <div class="ui label">5</div>
-                                </a>
-                                <a class="item" data-tab="inprogress">
-                                    Em progresso
-                                    <div class="ui label">2</div>
-                                </a> 
-                                <a class="item" data-tab="waiting"> 
-                                    Aguardando
-                                    <div class="ui label">--</div>
-                                </a> 
-                                <a class="item" data-tab="closed"> 
-                                    Fechados 
-                                    <div class="ui label">13</div>
-                                </a>
-                            </div>
-                        </nav>
+<div ng-controller="ctrlDashboard">
+    <div class="container-fluid debug">    
+        <div class="row">
+            {% include 'dashboard/nav.twig' %}
+            <main class="col-xs-12 col-lg-10 col-md-10">
+                {% block content %}
+                    <div class="ui basic segment">
+                        <h2 class="ui dividing header">
+                            {{ page_title }}
+                        </h2>
+                        <div class="row">
+                            <nav class="ui vertical pointing menu col-md-2" id="dashboard_nav">
+                                <div class="row">
+                                    <a class="item active" data-tab="all">
+                                        Todos
+                                        <div class="ui label">5</div>
+                                    </a>
+                                    <a class="item" data-tab="opened">
+                                        Abertos
+                                        <div class="ui label">5</div>
+                                    </a>
+                                    <a class="item" data-tab="inprogress">
+                                        Em progresso
+                                        <div class="ui label">2</div>
+                                    </a> 
+                                    <a class="item" data-tab="waiting"> 
+                                        Aguardando
+                                        <div class="ui label">--</div>
+                                    </a> 
+                                    <a class="item" data-tab="closed"> 
+                                        Fechados 
+                                        <div class="ui label">13</div>
+                                    </a>
+                                </div>
+                            </nav>
 
-                        <section class="col-md-10">
-                            <div class="ui bottom attached  tab segment active" id="response">
-                                <div class="ui top attached tabular menu">
-                                    <a class="item active" data-tab="alls">Todos</a>
-                                    <a class="item" data-tab="high">Prioridade Alta</a>
-                                    <a class="item" data-tab="mid">Prioridade Média</a>
-                                    <a class="item" data-tab="low">Prioridade Baixa</a>
+                            <section class="col-md-10">
+                                <ul >
+                                    <li ng-repeat="ticket in tickets">
+                                        {[{ ticket.hash }]}: {[{ ticket.nome }]}
+                                    </li>
+                                </ul>
+                                <div class="ui bottom attached  tab segment active" id="response">
+                                    <div class="ui top attached tabular menu">
+                                        <a class="item active" data-tab="alls">Todos</a>
+                                        <a class="item" data-tab="high">Prioridade Alta</a>
+                                        <a class="item" data-tab="mid">Prioridade Média</a>
+                                        <a class="item" data-tab="low">Prioridade Baixa</a>
+                                    </div>
+                                    <div class="ui bottom attached tab segment active" data-tab="all"></div>
+                                    <div class="ui bottom attached tab segment" data-tab="opened"></div>
+                                    <div class="ui bottom attached tab segment" data-tab="inprogress"></div>
+                                    <div class="ui bottom attached tab segment" data-tab="waitting"></div>
+                                    <div class="ui bottom attached tab segment" data-tab="closed"></div>
                                 </div>
-                                <div class="ui bottom attached tab segment active" data-tab="all"></div>
-                                
-                                <div class="ui bottom attached tab segment" data-tab="high">
-                                    Prioridade alta
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="mid">
-                                    Prioridade media
-                                </div>
-                                <div class="ui bottom attached tab segment" data-tab="low">
-                                    Prioridade baixa
-                                </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
-                </div>
 
-            {% endblock %}
-        </main>
+                {% endblock %}
+            </main>
+        </div>
     </div>
 </div>
 {% include 'footer.twig' %}

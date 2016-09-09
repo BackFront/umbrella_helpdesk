@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-     $.fn.api.settings.api = {
+    $.fn.api.settings.api = {
         'signin': '/login',
         'get open tikets': '/tikets/open',
         'get tikets': '/tikets'
@@ -76,7 +76,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-    var responseContext = $('#response')
+    var responseContext = $('#response');
     $('#dashboard_nav .item').tab({
         cache: false, /** @alterar alterar valor para true */
         method: 'GET',
@@ -91,5 +91,4 @@ jQuery(document).ready(function ($) {
             console.log(response.message);
         }
     });
-
 });
