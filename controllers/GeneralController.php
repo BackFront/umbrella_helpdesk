@@ -19,6 +19,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+
 namespace Controller
 {
 
@@ -38,9 +39,9 @@ namespace Controller
             $this->generalVar['language_attributes'] = "pt-br";
             $this->generalVar['page_author'] = "Douglas Alves";
             $this->generalVar['scripts'] = array(
-                "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js",                
+                "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js",
                 "/assets/dist/semantic_ui/semantic.min.js",
-                "https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.17/angular2.min.js",
                 "/assets/js/mainscript.js"
             );
             $this->generalVar['styles'] = array(
@@ -60,7 +61,12 @@ namespace Controller
 
         public function setVariable($key, $value)
         {
-            $this->generalVar[$key] = $value;
+            $var = $this->generalVar[$key];
+            if (is_array($var)):
+                array_push($var, $value);
+            else :
+                $this->generalVar[$key] = $value;
+            endif;
             return $this;
         }
 
@@ -76,7 +82,7 @@ namespace Controller
             $is_auth = new Authentication($args->EntityManager);
             $is_auth->setLevel($args->auth['level']);
 
-            if($is_auth->isAuth()):
+            if ($is_auth->isAuth()):
                 return true;
             endif;
             return false;
