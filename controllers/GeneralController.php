@@ -61,7 +61,7 @@ namespace Controller
 
         public function setVariable($key, $value)
         {
-            if (is_array(isset($this->generalVar[$key]))):
+            if (array_key_exists($key, $this->generalVar) && is_array($this->generalVar[$key])):
                 array_push($this->generalVar[$key], $value);
             else :
                 $this->generalVar[$key] = $value;
