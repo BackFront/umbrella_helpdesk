@@ -63,71 +63,31 @@ namespace Controller
 
         static function viewTickets($args)
         {
-            return self::getTickets($args);
-            
-            return $args->app['twig']->render('tickets/cards.twig', array(
-                        "itens" => [
-                            array(
-                                "id" => 2356,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "red",
-                                "priority" => "Urgente",
-                                "client" => [
-                                    "id" => 21,
-                                    "name" => "Pedro",
-                                    "company" => [
-                                        "id" => "Igeeker",
-                                        "name" => "Igeeker"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1554,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "blue",
-                                "priority" => "Normal",
-                                "client" => [
-                                    "id" => 15,
-                                    "name" => "Felipe",
-                                    "company" => [
-                                        "id" => 4456,
-                                        "name" => "SNDDigitall"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1645,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "orange",
-                                "priority" => "Alta",
-                                "client" => [
-                                    "id" => 1,
-                                    "name" => "Douglas",
-                                    "company" => [
-                                        "id" => 123854,
-                                        "name" => "OpenCode"
-                                    ]
-                                ]),
-                            array(
-                                "id" => 1645,
-                                "hash" => "#9abe75c9ee6",
-                                "date" => "22/jan/2016",
-                                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                                "label" => "black",
-                                "priority" => "Fechado",
-                                "client" => [
-                                    "id" => 1,
-                                    "name" => "Douglas",
-                                    "company" => [
-                                        "id" => 123854,
-                                        "name" => "OpenCode"
-                                    ]
-                                ])
+            $tickets = self::getTickets($args);
+
+            if (!$tickets)
+                return $tickets;
+
+            foreach ($tickets['data'] as $key => $value) {
+                $itens[] = array(
+                    "id" => $value['id'],
+                    "hash" => $value['hash'],
+                    "date" => $value['creation_date']['date'],
+                    //"description" => $value['id'],
+                    "label" => "red",
+                    "priority" => "Urgente",
+                    "client" => [
+                        "id" => $value['user']['id'],
+                        "name" => $value['user']['name'],
+                        "company" => [
+                            "id" => "Igeeker",
+                            "name" => "Igeeker"
                         ]
+                ]);
+            }
+
+            return $args->app['twig']->render('tickets/cards.twig', array(
+                        "itens" => $itens
             ));
         }
 
