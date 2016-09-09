@@ -53,5 +53,5 @@ $app->get('/view/tickets/{status}', function($status) use ($app, $em)
     $args->EntityManager = $em;
     $args->param['status'] = ($status == 'all') ? null : $status;
 
-    return $app->json(Controller\TicketController::viewTickets($args));
+    return Controller\TicketController::viewTickets($args);
 });

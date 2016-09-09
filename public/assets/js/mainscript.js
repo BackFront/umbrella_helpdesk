@@ -4,6 +4,15 @@ jQuery(document).ready(function ($) {
         'get open tikets': '/tikets/open',
         'get tikets': '/tikets'
     };
+    
+    //define the response
+    $.fn.api.settings.successTest = function (response) {
+        if (response && response.success) {
+            return response.success;
+        }
+        return false;
+    };
+
     $('.ui.form').form({
         fields: {
             email: {
@@ -67,12 +76,20 @@ jQuery(document).ready(function ($) {
 
     });
 
-
+    var responseContext = $('#response')
     $('#dashboard_nav .item').tab({
-        cache: false,
-        context: '#response',
+        cache: false, /** @alterar alterar valor para true */
+        method: 'GET',
+        context: responseContext,
         auto: true,
-        path: '/view/tickets'
+        path: '/view/tickets',
+        onSuccess: function (response) {
+            console.log(response);
+        },
+        onError: function (response) {
+            responseContext.text(response.message);
+            console.log(response.message);
+        }
     });
 
 });

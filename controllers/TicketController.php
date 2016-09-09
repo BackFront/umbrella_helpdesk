@@ -69,19 +69,22 @@ namespace Controller
                 return $tickets;
 
             foreach ($tickets['data'] as $key => $value) {
+                $label = self::getLabelTicket($value['priority']);
+                //echo $label['label']."<br>";
+                //echo $value['priority'];
                 $itens[] = array(
                     "id" => $value['id'],
-                    "hash" => $value['hash'],
+                    "hash" => substr($value['hash'], 0, 10),
                     "date" => $value['creation_date']['date'],
-                    //"description" => $value['id'],
-                    "label" => "red",
-                    "priority" => "Urgente",
+                    "description" => $value['description'],
+                    "label" => $label['color'],
+                    "priority" => $label['label'],
                     "client" => [
                         "id" => $value['user']['id'],
                         "name" => $value['user']['name'],
                         "company" => [
-                            "id" => "Igeeker",
-                            "name" => "Igeeker"
+                            "id" => $value['user']['company']['id'],
+                            "name" => $value['user']['company']['name']
                         ]
                 ]);
             }
@@ -89,6 +92,34 @@ namespace Controller
             return $args->app['twig']->render('tickets/cards.twig', array(
                         "itens" => $itens
             ));
+        }
+
+        static function getLabelTicket($priority)
+        {
+            switch ($priority):
+
+                case 'low':
+                    $label['color'] = 'green';
+                    $label['label'] = 'Baixa';
+                    break;
+
+                case 'normal':
+                    $label['color'] = 'blue';
+                    $label['label'] = 'Normal';
+                    break;
+
+                case 'medium':
+                    $label['color'] = 'orange';
+                    $label['label'] = 'Media';
+                    break;
+
+                case 'high':
+                    $label['color'] = 'red';
+                    $label['label'] = 'Urgente';
+                    break;
+
+            endswitch;
+            return $label;
         }
 
     }

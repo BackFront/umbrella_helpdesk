@@ -59,16 +59,18 @@ namespace Uosh\Service
 
             if ($this->status == null):
                 $query = $this->EntityManeger->createQueryBuilder()
-                        ->select('t', 'u')
+                        ->select('t', 'u', 'c')
                         ->from(self::EntityTicketPath, 't')
                         ->setMaxResults($limit)
                         ->join('t.user', 'u')
+                        ->join('u.company', 'c')
                         ->getQuery();
             else :
                 $query = $this->EntityManeger->createQueryBuilder()
-                        ->select('t', 'u')
+                        ->select('t', 'u', 'c')
                         ->from(self::EntityTicketPath, 't')
                         ->leftJoin('t.user', 'u')
+                        ->leftJoin('u.company', 'c')
                         ->where("t.status = :status")
                         ->setMaxResults($limit)
                         ->setParameter("status", $this->status)
