@@ -1,10 +1,10 @@
 jQuery(document).ready(function ($) {
-    $.fn.api.settings.api = {
+     $.fn.api.settings.api = {
         'signin': '/login',
         'get open tikets': '/tikets/open',
         'get tikets': '/tikets'
     };
-    
+
     //define the response
     $.fn.api.settings.successTest = function (response) {
         if (response && response.success) {

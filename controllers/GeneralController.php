@@ -38,8 +38,9 @@ namespace Controller
             $this->generalVar['language_attributes'] = "pt-br";
             $this->generalVar['page_author'] = "Douglas Alves";
             $this->generalVar['scripts'] = array(
-                "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js",                
                 "/assets/dist/semantic_ui/semantic.min.js",
+                "https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.js",
                 "/assets/js/mainscript.js"
             );
             $this->generalVar['styles'] = array(
