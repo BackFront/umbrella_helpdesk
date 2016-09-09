@@ -63,7 +63,7 @@ namespace Controller
         {
             $var = $this->generalVar[$key];
             if (is_array($var)):
-                array_push($var, $value);
+                array_push($this->generalVar[$key], $value);
             else :
                 $this->generalVar[$key] = $value;
             endif;
