@@ -19,6 +19,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
  * @since 1.0.0
  */
+
 namespace Uosh\Entity
 {
 
@@ -43,6 +44,16 @@ namespace Uosh\Entity
          * @ORM\Column(type="string", length=32)
          */
         private $hash;
+        //----------------------------------------------------------------------
+        /**
+         * @ORM\Column(type="string", length=100)
+         */
+        private $title;
+        //----------------------------------------------------------------------
+        /**
+         * @ORM\Column(type="text")
+         */
+        private $description;
         //----------------------------------------------------------------------
         /**
          * @ORM\ManyToOne(targetEntity="Uosh\Entity\User")
@@ -108,6 +119,16 @@ namespace Uosh\Entity
             return $this->status;
         }
 
+        function getTitle()
+        {
+            return $this->title;
+        }
+
+        function getDescription()
+        {
+            return $this->description;
+        }
+
         //----------------------------------------------------------------------
         // ===== SETTERS
         //----------------------------------------------------------------------
@@ -141,7 +162,16 @@ namespace Uosh\Entity
             $this->status = $status;
         }
 
-    
+        function setTitle($title)
+        {
+            $this->title = $title;
+        }
+
+        function setDescription($description)
+        {
+            $this->description = $description;
+        }
+
     }
 
 }
